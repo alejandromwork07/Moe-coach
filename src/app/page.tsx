@@ -110,11 +110,9 @@ export default function Home() {
 
       <section className="section section-light recognition-section">
         <div className="page-shell">
-          <div className="section-intro-row recognition-intro">
-            <div>
-              <p className="eyebrow">When effort is not the problem</p>
-              <h2>You do not need more noise. You need the pattern.</h2>
-            </div>
+          <div className="recognition-intro">
+            <p className="eyebrow">When effort is not the problem</p>
+            <h2>You do not need more noise.<span>You need the pattern.</span></h2>
             <p>
               Most meaningful problems do not stay in one category. Energy changes decisions.
               Work shapes relationships. Mindset affects health. H2W starts by seeing what is connected.

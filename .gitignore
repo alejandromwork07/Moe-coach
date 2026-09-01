@@ -21,3 +21,5 @@ next-env.d.ts
 *.log
 npm-debug.log*
 chat.md
+.vercel
+.env*
