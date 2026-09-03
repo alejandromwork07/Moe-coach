@@ -18,7 +18,7 @@ export default async function SchedulePage() {
   const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL;
 
   return (
-    <main className="schedule-page">
+    <main className="secondary-page schedule-page">
       <a className="skip-link" href="#page-content">Skip to scheduling</a>
       <header className="application-header page-shell">
         <Link href="/" aria-label="Happy Healthy Wealthy home">

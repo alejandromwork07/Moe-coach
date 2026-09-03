@@ -6,7 +6,7 @@ export const metadata: Metadata = { title: "Privacy Policy" };
 
 export default function PrivacyPage() {
   return (
-    <main>
+    <main className="secondary-page legal-shell">
       <SiteHeader />
       <article className="legal-page page-shell" id="page-content">
         <p className="eyebrow eyebrow-orange">Happy Healthy Wealthy</p>

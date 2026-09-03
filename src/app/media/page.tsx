@@ -19,7 +19,7 @@ const formats: Array<[LucideIcon, string, string]> = [
 
 export default function MediaPage() {
   return (
-    <main>
+    <main className="secondary-page media-page">
       <SiteHeader />
       <PageHero
         eyebrow="Media & speaking"

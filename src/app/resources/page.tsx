@@ -20,7 +20,7 @@ const tracks: Array<[LucideIcon, string, string, string]> = [
 
 export default function ResourcesPage() {
   return (
-    <main>
+    <main className="secondary-page resources-page">
       <SiteHeader />
       <PageHero
         eyebrow="H2W resources"
@@ -29,6 +29,7 @@ export default function ResourcesPage() {
         image="/images/dr-moe-resources-v1.webp"
         imageAlt="Dr. Moe reviewing research and notes"
         imagePosition="center"
+        align="right"
       />
 
       <section className="section section-light resource-intro">

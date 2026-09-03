@@ -19,7 +19,7 @@ export default async function ContactPage({
   const initialType = ["podcast", "media", "coaching", "partnership"].includes(type ?? "") ? type : "";
 
   return (
-    <main>
+    <main className="secondary-page contact-page">
       <SiteHeader />
       <PageHero
         eyebrow="Contact H2W"
@@ -28,6 +28,7 @@ export default async function ContactPage({
         image="/images/dr-moe-resources-v1.webp"
         imageAlt="Dr. Moe at her desk"
         imagePosition="left center"
+        align="right"
       />
       <section className="section section-light contact-section">
         <div className="page-shell contact-grid">

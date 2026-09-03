@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function ApplyPage() {
   return (
-    <main className="application-page">
+    <main className="secondary-page application-page">
       <a className="skip-link" href="#page-content">Skip to application</a>
       <header className="application-header page-shell">
         <Link href="/" aria-label="Happy Healthy Wealthy home">

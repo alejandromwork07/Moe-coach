@@ -7,7 +7,7 @@ export const metadata: Metadata = { title: "Terms of Use" };
 
 export default function TermsPage() {
   return (
-    <main>
+    <main className="secondary-page legal-shell">
       <SiteHeader />
       <article className="legal-page page-shell" id="page-content">
         <p className="eyebrow eyebrow-orange">Happy Healthy Wealthy</p>

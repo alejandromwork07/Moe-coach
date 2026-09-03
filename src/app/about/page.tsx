@@ -20,7 +20,7 @@ const principles = [
 
 export default function AboutPage() {
   return (
-    <main>
+    <main className="secondary-page about-page">
       <SiteHeader />
       <PageHero
         eyebrow="About Dr. Moe"

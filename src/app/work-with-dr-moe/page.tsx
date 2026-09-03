@@ -20,7 +20,7 @@ const session: Array<[LucideIcon, string, string]> = [
 
 export default function CoachingPage() {
   return (
-    <main>
+    <main className="secondary-page coaching-page">
       <SiteHeader />
       <PageHero
         eyebrow="Work with Dr. Moe"

@@ -21,26 +21,27 @@ const topics = [
 
 export default function PodcastPage() {
   return (
-    <main>
+    <main className="secondary-page podcast-page">
       <SiteHeader />
       <PageHero
         eyebrow="The Happy Healthy Wealthy podcast"
         title="Real conversations about rebuilding and living an extraordinary life."
         copy="Dr. Moe speaks with researchers, clinicians, entrepreneurs, innovators, and people with remarkable recovery stories about the science, decisions, setbacks, and strategies behind living better."
-        image="/images/h2w-podcast-studio-v2.webp"
-        imageAlt="Dr. Moe in the Happy Healthy Wealthy podcast studio"
-        imagePosition="right center"
+        image="/images/h2w-podcast-hero-v3.webp"
+        imageAlt="Dr. Moe hosting the Happy Healthy Wealthy podcast in her studio"
+        imagePosition="38% center"
+        align="right"
       />
 
       <section className="section section-light show-intro">
         <div className="page-shell show-grid">
-          <Image src="/images/dr-moe-podcast.webp" alt="Happy Healthy Wealthy podcast cover" width={560} height={560} />
           <div>
             <p className="eyebrow">Beyond health recovery</p>
             <h2>One philosophy. A much wider conversation.</h2>
             <p>The podcast is a natural entry point into H2W, but it is not limited to coaching or recovery. It creates room for rigorous ideas and honest stories across health, mindset, performance, relationships, purpose, work, and freedom.</p>
             <PodcastPlatforms />
           </div>
+          <Image src="/images/dr-moe-podcast.webp" alt="Happy Healthy Wealthy podcast cover" width={560} height={560} />
         </div>
       </section>
 
