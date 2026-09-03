@@ -3,7 +3,7 @@
 import { FormEvent, useState } from "react";
 import { ArrowRight, CheckCircle2, LoaderCircle } from "lucide-react";
 
-export function ContactForm() {
+export function ContactForm({ initialType = "" }: { initialType?: string }) {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
   async function submit(event: FormEvent<HTMLFormElement>) {
@@ -44,13 +44,13 @@ export function ContactForm() {
       <label>Email address<input name="email" type="email" autoComplete="email" maxLength={160} required /></label>
       <label>
         What can we help with?
-        <select name="inquiryType" defaultValue="" required>
+        <select name="inquiryType" defaultValue={initialType} required>
           <option value="" disabled>Select one</option>
-          <option>General question</option>
-          <option>Podcast guest or topic</option>
-          <option>Media or speaking inquiry</option>
-          <option>Coaching question</option>
-          <option>Partnership</option>
+          <option value="general">General question</option>
+          <option value="podcast">Podcast guest or topic</option>
+          <option value="media">Media or speaking inquiry</option>
+          <option value="coaching">Coaching question</option>
+          <option value="partnership">Partnership</option>
         </select>
       </label>
       <label>Message<textarea name="message" rows={7} minLength={20} maxLength={4000} required /></label>

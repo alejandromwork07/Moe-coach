@@ -9,7 +9,7 @@ import { SiteHeader } from "../site-header";
 
 export const metadata: Metadata = {
   title: "About Dr. Moe",
-  description: "Meet Dr. Moe and discover the perspective behind Happy Healthy Wealthy.",
+  description: "Meet Dr. Moe Sarah Smith, a Doctor of Chiropractic, functional-medicine and nutrition clinician, educator, and founder of Happy Healthy Wealthy.",
 };
 
 const principles = [
@@ -24,23 +24,23 @@ export default function AboutPage() {
       <SiteHeader />
       <PageHero
         eyebrow="About Dr. Moe"
-        title="A wider lens on what makes life work."
-        copy="Clinician, educator, interviewer, and relentless student of the systems that shape how people feel and live."
-        image="/images/dr-moe-about-v2.png"
-        imageAlt="Dr. Moe"
+        title="Clinical experience. Clear decisions. A whole-person view."
+        copy="Dr. Moe Sarah Smith is a Doctor of Chiropractic, functional-medicine and nutrition clinician, educator, and founder of Moe Bodyworks."
+        image="/images/dr-moe-about-v2.webp"
+        imageAlt="Dr. Moe Sarah Smith"
         imagePosition="70% 30%"
       />
 
       <section className="section section-light editorial-section">
         <div className="page-shell editorial-grid">
           <div>
-            <p className="eyebrow">Why H2W exists</p>
-            <h2>People are not a collection of separate problems.</h2>
+            <p className="eyebrow">Meet Dr. Moe</p>
+            <h2>Experience matters when your health story is complicated.</h2>
           </div>
           <div className="editorial-copy">
-            <p className="lead">For more than two decades, Dr. Moe has worked where health information meets the complexity of a real human life.</p>
-            <p>That perspective revealed a recurring pattern: people often receive fragmented answers to connected questions. They may improve one metric while losing energy, success while losing meaning, or gather more information without gaining direction.</p>
-            <p>Happy Healthy Wealthy was created to widen the conversation. It brings together science, lived experience, practical strategy, and candid dialogue so people can make more coherent decisions about the life they are building.</p>
+            <p className="lead">For more than 22 years, Dr. Moe has worked directly with people navigating pain, fatigue, injury, metabolic challenges, complicated health histories, and the distance between being &ldquo;not sick&rdquo; and actually feeling well.</p>
+            <p>Her work combines clinical experience, individualized laboratory insights, nutrition, recovery strategy, movement, and practical coaching. She has also spent years teaching anatomy and clinical concepts in higher education, giving her a rare ability to translate complicated science into clear decisions people can use.</p>
+            <p>Happy Healthy Wealthy is the next evolution of that work: helping people understand what may be keeping them stuck, rebuild their health, and reclaim the parts of life that poor health has taken away.</p>
           </div>
         </div>
       </section>
@@ -62,20 +62,22 @@ export default function AboutPage() {
       <section className="section section-light origin-section">
         <div className="page-shell origin-grid">
           <div className="origin-image">
-            <Image src="/images/dr-moe-hero.png" alt="Dr. Moe in conversation" fill sizes="(max-width: 900px) 100vw, 42vw" />
+            <Image src="/images/dr-moe-hero.webp" alt="Dr. Moe in conversation" fill sizes="(max-width: 900px) 100vw, 42vw" />
           </div>
           <div>
             <p className="eyebrow">Experience in context</p>
-            <h2>Clinical roots. A bigger conversation.</h2>
-            <p>Dr. Moe&apos;s background informs H2W, but H2W is broader than a clinic. The podcast and coaching work explore the decisions, environments, beliefs, and relationships that shape wellbeing over time.</p>
+            <h2>Clinical roots. A distinct coaching path.</h2>
+            <p>Dr. Moe&apos;s clinical experience informs the H2W perspective, but H2W coaching is not medical treatment. Clinical services are handled separately through Moe Bodyworks and the appropriate clinical process.</p>
             <ul className="check-list">
-              <li><Check aria-hidden="true" /> More than two decades of client-facing perspective</li>
-              <li><Check aria-hidden="true" /> Experience translating technical ideas for real people</li>
-              <li><Check aria-hidden="true" /> A cross-disciplinary approach to health and performance</li>
+              <li><Check aria-hidden="true" /> Doctor of Chiropractic</li>
+              <li><Check aria-hidden="true" /> More than 22 years in clinical practice</li>
+              <li><Check aria-hidden="true" /> Functional medicine, nutrition, and individualized laboratory assessment</li>
+              <li><Check aria-hidden="true" /> Former higher-education anatomy and clinical educator</li>
               <li><Check aria-hidden="true" /> Founder of Moe Bodyworks</li>
+              <li><Check aria-hidden="true" /> Host of the Happy Healthy Wealthy Podcast</li>
             </ul>
             <a className="text-link" href="https://moebodyworks.com" target="_blank" rel="noreferrer">
-              Visit the clinical practice <ExternalLink aria-hidden="true" size={16} />
+              Clinical services: visit Moe Bodyworks <ExternalLink aria-hidden="true" size={16} />
             </a>
           </div>
         </div>

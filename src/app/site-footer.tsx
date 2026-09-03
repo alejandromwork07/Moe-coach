@@ -14,7 +14,7 @@ export function SiteFooter() {
   return (
     <footer className="site-footer">
       <div className="page-shell footer-main">
-        <Image src="/logos/h2w-square.png" alt="Happy Healthy Wealthy" width={150} height={150} />
+        <Image src="/logos/h2w-square.webp" alt="Happy Healthy Wealthy" width={150} height={150} />
         <div className="footer-brand-copy">
           <p>Happy Healthy Wealthy</p>
           <span>The Formula for Extraordinary</span>
@@ -27,6 +27,7 @@ export function SiteFooter() {
         <span>© {new Date().getFullYear()} Happy Healthy Wealthy</span>
         <div>
           <Link href="/privacy">Privacy</Link>
+          <Link href="/terms">Terms</Link>
           <Link href="/disclaimer">Disclaimer</Link>
         </div>
         <p>Educational content only. Individual results vary and no outcome is guaranteed.</p>

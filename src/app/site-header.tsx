@@ -21,8 +21,9 @@ export function SiteHeader() {
 
   return (
     <header className="site-header">
+      <a className="skip-link" href="#page-content">Skip to page content</a>
       <Link className="brand-link" href="/" aria-label="Happy Healthy Wealthy home">
-        <Image src="/logos/h2w-horizontal.png" alt="H2W Happy Healthy Wealthy" width={300} height={200} priority />
+        <Image src="/logos/h2w-horizontal.webp" alt="H2W Happy Healthy Wealthy" width={300} height={200} priority />
       </Link>
       <nav className="desktop-nav" aria-label="Main navigation">
         {navigation.map((item) => (
@@ -47,7 +48,7 @@ export function SiteHeader() {
       </button>
       <nav className={open ? "mobile-nav open" : "mobile-nav"} id="mobile-navigation" aria-label="Mobile navigation">
         {navigation.map((item) => <Link href={item.href} key={item.href} onClick={() => setOpen(false)}>{item.label}</Link>)}
-        <Link href="/apply" onClick={() => setOpen(false)}>Apply for a strategy session <ArrowRight aria-hidden="true" size={18} /></Link>
+        <Link href="/apply" onClick={() => setOpen(false)}>Apply for a recovery strategy call <ArrowRight aria-hidden="true" size={18} /></Link>
       </nav>
     </header>
   );

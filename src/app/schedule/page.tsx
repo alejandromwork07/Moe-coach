@@ -1,23 +1,29 @@
 import type { Metadata } from "next";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, CalendarCheck, Mail } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Schedule Your Strategy Session",
-  description: "Choose a time for your Happy Healthy Wealthy strategy session.",
+  title: "Schedule Your Recovery Strategy Call",
+  description: "Choose a time for your complimentary H2W Recovery Strategy Call.",
 };
 
-export default function SchedulePage() {
+export default async function SchedulePage() {
+  const cookieStore = await cookies();
+  if (!cookieStore.has("h2w_application_submitted")) redirect("/apply");
+
   const schedulingUrl = process.env.NEXT_PUBLIC_SCHEDULING_URL;
   const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL;
 
   return (
     <main className="schedule-page">
+      <a className="skip-link" href="#page-content">Skip to scheduling</a>
       <header className="application-header page-shell">
         <Link href="/" aria-label="Happy Healthy Wealthy home">
           <Image
-            src="/logos/h2w-horizontal.png"
+            src="/logos/h2w-horizontal.webp"
             alt="H2W Happy Healthy Wealthy"
             width={210}
             height={140}
@@ -29,20 +35,20 @@ export default function SchedulePage() {
         </Link>
       </header>
 
-      <section className="schedule-intro page-shell">
+      <section className="schedule-intro page-shell" id="page-content">
         <CalendarCheck aria-hidden="true" size={30} />
-        <p className="eyebrow eyebrow-orange">Your next step</p>
-        <h1>{schedulingUrl ? "Choose a time to talk." : "Scheduling is being finalized."}</h1>
+        <p className="eyebrow eyebrow-orange">Thank you for applying</p>
+        <h1>{schedulingUrl ? "Schedule your Recovery Strategy Call." : "Scheduling is being finalized."}</h1>
         <p>
           {schedulingUrl
-            ? "Select the appointment that works best for you. You will receive confirmation and call details by email."
+            ? "Choose a time below for your complimentary 20-minute call. If your situation requires a different kind of support, Dr. Moe's team may contact you before the call."
             : "The dedicated H2W calendar will appear here as soon as the scheduling connection is complete."}
         </p>
       </section>
 
       <section className="scheduler-shell page-shell">
         {schedulingUrl ? (
-          <iframe title="Schedule a strategy session" src={schedulingUrl} />
+          <iframe title="Schedule a Recovery Strategy Call" src={schedulingUrl} referrerPolicy="strict-origin-when-cross-origin" />
         ) : (
           <div className="scheduler-placeholder">
             <CalendarCheck aria-hidden="true" size={42} />

@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const routes = ["", "/about", "/podcast", "/work-with-dr-moe", "/resources", "/media", "/contact", "/apply", "/privacy", "/disclaimer"];
+const routes = ["", "/about", "/podcast", "/work-with-dr-moe", "/resources", "/media", "/contact", "/apply", "/privacy", "/terms", "/disclaimer"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { AttributionCapture } from "./attribution-capture";
 import "./globals.css";
 
 const description = "Science, strategy, and honest conversations for building a healthier body, a happier life, and greater freedom with Dr. Moe.";
@@ -17,9 +18,9 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "Happy Healthy Wealthy",
     url: "/",
-    images: [{ url: "/og.png", width: 1680, height: 945, alt: "Happy Healthy Wealthy — The Formula for Extraordinary" }],
+    images: [{ url: "/og.webp", width: 1680, height: 945, alt: "Happy Healthy Wealthy — The Formula for Extraordinary" }],
   },
-  twitter: { card: "summary_large_image", title: "Happy Healthy Wealthy", description, images: ["/og.png"] },
+  twitter: { card: "summary_large_image", title: "Happy Healthy Wealthy", description, images: ["/og.webp"] },
   robots: { index: true, follow: true },
 };
 
@@ -46,6 +47,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body>
+        <AttributionCapture />
         {children}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       </body>

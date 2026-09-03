@@ -1,72 +1,126 @@
+import type { Metadata } from "next";
+import type { LucideIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
+  Activity,
+  CalendarRange,
   Check,
   CirclePlay,
+  ClipboardList,
+  Dna,
+  ExternalLink,
   HeartPulse,
   Lightbulb,
+  MessagesSquare,
   Mic2,
-  Quote,
+  RefreshCw,
   Sparkles,
   TrendingUp,
 } from "lucide-react";
 import { CtaBand } from "./cta-band";
+import { PodcastPlatforms } from "./podcast-platforms";
 import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
+import { TestimonialsSection } from "./testimonials-section";
+
+const homeDescription =
+  "Private health recovery coaching for people rebuilding after cancer treatment, illness, surgery, injury, or prolonged poor health. Apply for a complimentary strategy call with Dr. Moe.";
+
+export const metadata: Metadata = {
+  title: { absolute: "Health Recovery Coaching with Dr. Moe | Happy Healthy Wealthy" },
+  description: homeDescription,
+  openGraph: {
+    title: "Health Recovery Coaching with Dr. Moe | Happy Healthy Wealthy",
+    description: homeDescription,
+    url: "/",
+  },
+  twitter: {
+    title: "Health Recovery Coaching with Dr. Moe",
+    description: homeDescription,
+  },
+};
 
 const pillars = [
   {
     name: "Happy",
-    eyebrow: "Mindset & meaning",
-    description: "Create the clarity, confidence, relationships, and sense of purpose that make your life feel like your own.",
+    eyebrow: "Identity & connection",
+    description: "Mindset, identity, relationships, confidence, purpose, and the ability to enjoy your life again.",
     color: "pillar-blue",
     icon: Sparkles,
   },
   {
     name: "Healthy",
-    eyebrow: "Biology & vitality",
-    description: "Understand your body, strengthen the foundations of health, and build energy for everything that matters.",
+    eyebrow: "Biology & capacity",
+    description: "Energy, strength, sleep, nutrition, metabolism, digestion, movement, recovery capacity, and measurable health information.",
     color: "pillar-green",
     icon: HeartPulse,
   },
   {
     name: "Wealthy",
-    eyebrow: "Freedom & impact",
-    description: "Align your time, work, and resources with the extraordinary life you are actually trying to build.",
+    eyebrow: "Freedom & resources",
+    description: "Time, options, resources, work capacity, independence, and the freedom to build a life that feels like yours.",
     color: "pillar-gold",
     icon: TrendingUp,
   },
 ];
 
-const tensions = [
-  ["Capable, but depleted", "You keep delivering for everyone else while your own energy, focus, or health slips."],
-  ["Informed, but overwhelmed", "You have advice from everywhere and no confident way to decide what matters first."],
-  ["Successful, but misaligned", "Life looks good from the outside, yet your days no longer feel connected to what matters."],
-  ["Ready, but unclear", "You know something needs to change. The difficult part is finding the right starting point."],
+const recoverySignals = [
+  "Fatigue that does not match the amount of effort you are putting in",
+  "Loss of strength, stamina, muscle, or physical confidence",
+  "Weight or metabolic changes that no longer respond the way they once did",
+  "Sleep, digestion, pain, inflammation, or stress that complicate recovery",
+  "Conflicting advice and no clear sense of what to prioritize",
+  "The unsettling feeling that you survived the event but have not fully gotten your life back",
 ];
 
-const progression = [
-  ["01", "See the whole picture", "Move beyond isolated symptoms and surface-level goals."],
-  ["02", "Find the leverage point", "Identify the pattern or priority that can unlock meaningful progress."],
-  ["03", "Build a practical strategy", "Turn insight into decisions that work in your actual life."],
-  ["04", "Create sustainable momentum", "Strengthen the system instead of relying on another temporary push."],
+const transformationOutcomes = [
+  ["01", "Clarity", "Know what deserves attention now and what can wait."],
+  ["02", "Capacity", "Build the physical and mental reserve required to participate more fully in life."],
+  ["03", "Confidence", "Understand your body and make decisions from a plan instead of fear or confusion."],
+  ["04", "Consistency", "Turn good intentions into actions that fit your actual schedule and limitations."],
+  ["05", "Momentum", "Stop waiting to feel normal and begin building the next version of your life."],
 ];
 
-const steps = [
-  ["01", "Share the full picture", "Complete a focused application about your goals, current challenges, and readiness for change."],
-  ["02", "Clarify your next move", "If there is a potential fit, choose a time for a complimentary conversation with Dr. Moe."],
-  ["03", "Decide what comes next", "Leave with greater clarity and, when appropriate, explore a more individualized path forward."],
+const recoverySteps = [
+  ["01", "Map the full story", "Organize the health event, treatment history, current symptoms, lifestyle, goals, obstacles, and available testing."],
+  ["02", "Find the leverage points", "Identify the patterns and priorities most likely to be holding back progress."],
+  ["03", "Build the roadmap", "Create clear, realistic actions across health, habits, strength, recovery, and life context."],
+  ["04", "Implement and adjust", "Use twice-monthly coaching and weekday messaging to troubleshoot, refine, and maintain momentum."],
+  ["05", "Reassess and move forward", "Measure meaningful changes and create a plan for the next stage."],
+];
+
+const fitSignals = [
+  "You are medically stable but still do not feel physically or emotionally recovered.",
+  "You are rebuilding after cancer treatment, illness, surgery, injury, or an accident.",
+  "You were once highly capable and active, but fatigue or health changes have made your life smaller.",
+  "You are willing to make changes but need help knowing which changes matter most.",
+  "You want a personalized strategy rather than a one-size-fits-all protocol.",
+  "You value science and measurable information while understanding that recovery happens inside a real life.",
+];
+
+const programIncludes: Array<[LucideIcon, string, string]> = [
+  [CalendarRange, "90-minute Recovery Mapping Session", "Organize your history, current challenges, goals, constraints, and existing information."],
+  [ClipboardList, "Personalized H2W Recovery Roadmap", "Prioritized action steps across health, habits, recovery capacity, and life context."],
+  [MessagesSquare, "Eleven private coaching sessions", "Focused 45-minute sessions, generally held twice monthly after your initial mapping session."],
+  [RefreshCw, "Weekday course correction", "Brief text or voice-message support during stated business hours, with a one-business-day response expectation."],
+  [Activity, "Individualized progress tracking", "Follow relevant symptoms, habits, performance markers, body composition, or laboratory information."],
+  [Dna, "Optional targeted recommendations", "Additional testing, supplements, products, and clinical services may be recommended and are billed separately."],
 ];
 
 const faqs = [
-  ["Who is the strategy session for?", "It is for people who are ready to look beyond a single symptom or goal and examine how health, mindset, work, relationships, and freedom affect one another."],
-  ["Is this medical care?", "No. H2W podcast content and strategy sessions are educational and coaching-oriented. They do not diagnose, treat, or replace care from your licensed healthcare professionals."],
-  ["What happens after I apply?", "Dr. Moe's team reviews the application for alignment. When the next step is appropriate, you will be directed to the H2W calendar to select an available time."],
-  ["Is the session really complimentary?", "Yes. There is no fee for the initial strategy session and no obligation to continue. The purpose is to understand your goals, identify priorities, and assess fit."],
+  ["Is this medical treatment?", "No. H2W Health Recovery Coaching is a coaching and educational service. It does not replace your physicians, oncology team, rehabilitation providers, mental-health professionals, or emergency care. Any separate clinical service is clearly identified and handled through the appropriate clinical process."],
+  ["Do I need a specific diagnosis?", "No. The program begins with your health history, present challenges, goals, and readiness for change. Fit is determined through the application and complimentary call."],
+  ["Do you work with people after cancer treatment?", "Yes. Post-treatment recovery is an important focus of the program. Coaching does not treat cancer or replace oncology care. Clients must be appropriate for coaching and continue recommended medical follow-up."],
+  ["What if I am still in active treatment?", "Apply and share where you are in treatment. Dr. Moe will determine whether coaching is appropriate now, whether coordination with your treating team is needed, or whether it is better to begin later."],
+  ["Is laboratory testing included?", "Testing is individualized. Additional labs, supplements, and clinical services are optional and billed separately. Clients who pay for the six-month program in full receive the DNA Health Blueprint (3X4 Genetics) with personalized interpretation at no additional charge."],
+  ["Can I participate remotely?", "Yes. Private coaching sessions can be completed remotely. Some laboratory or in-person clinical services may depend on location, eligibility, and provider requirements."],
+  ["What happens after I apply?", "After submitting the application, applicants are directed to schedule a complimentary 20-minute Recovery Strategy Call. The call is used to understand your goals, answer questions, and determine whether the program is a strong fit. Dr. Moe's team may contact you before the call if your situation requires a different kind of support."],
+  ["Is a result guaranteed?", "No ethical recovery program can guarantee a specific result. Outcomes vary based on health history, medical factors, participation, consistency, and many other circumstances."],
 ];
 
-function ApplyLink({ label = "Apply for your complimentary strategy session" }: { label?: string }) {
+function ApplyLink({ label = "Apply for a recovery strategy call" }: { label?: string }) {
   return (
     <Link className="button button-primary" href="/apply">
       {label}<ArrowRight aria-hidden="true" size={18} />
@@ -79,66 +133,81 @@ export default function Home() {
     <main>
       <SiteHeader />
 
-      <section className="hero" id="top">
-        <Image className="hero-image" src="/images/dr-moe-hero.png" alt="Dr. Moe, host of Happy Healthy Wealthy" fill sizes="100vw" priority />
+      <section className="hero health-recovery-hero" id="page-content">
+        <Image className="hero-image" src="/images/dr-moe-hero.webp" alt="Dr. Moe, health recovery coach and founder of Happy Healthy Wealthy" fill sizes="100vw" priority />
         <div className="hero-shade" />
         <div className="hero-content page-shell">
-          <p className="eyebrow eyebrow-orange">The formula for extraordinary</p>
-          <h1>Your life is a system.<span>Make every part stronger.</span></h1>
+          <p className="eyebrow eyebrow-orange">Happy Healthy Wealthy · Health Recovery Coaching</p>
+          <h1>You don&apos;t feel like yourself anymore.<span>Let&apos;s help you find your way back.</span></h1>
           <p className="hero-copy">
-            Science, strategy, and honest conversations for building a healthier body,
-            a happier life, and greater freedom with Dr. Moe.
+            After cancer treatment, a major illness, surgery, an accident, an injury, or a long
+            season of poor health, surviving the crisis is not always the same as feeling recovered.
+            H2W Health Recovery Coaching helps you rebuild your energy, strength, confidence, and
+            direction with a personalized strategy grounded in science, experience, and your real life.
           </p>
           <div className="hero-actions">
-            <ApplyLink label="Apply for your strategy session" />
-            <Link className="button button-ghost" href="/podcast">
-              <CirclePlay aria-hidden="true" size={19} /> Explore the podcast
+            <ApplyLink label="Apply for a recovery strategy call" />
+            <Link className="button button-ghost" href="#dr-moe">
+              Meet Dr. Moe <ArrowRight aria-hidden="true" size={18} />
             </Link>
           </div>
-          <p className="hero-note">Complimentary. Focused. Designed to clarify your next step.</p>
         </div>
       </section>
 
-      <section className="authority-band" aria-label="Happy Healthy Wealthy perspective">
+      <section className="authority-band" aria-label="Dr. Moe's health recovery experience">
         <div className="page-shell authority-grid">
-          <div><strong>20+</strong><span>Years of clinical perspective</span></div>
-          <div><strong>3</strong><span>Connected dimensions of life</span></div>
-          <div><strong>1</strong><span>Whole-person strategy</span></div>
-          <div><strong>H2W</strong><span>The formula for extraordinary</span></div>
+          <div><strong>22+</strong><span>Years in clinical practice</span></div>
+          <div><strong>Functional</strong><span>Medicine &amp; nutrition</span></div>
+          <div><strong>Personalized</strong><span>Laboratory insights</span></div>
+          <div><strong>Private</strong><span>Recovery coaching</span></div>
         </div>
       </section>
 
       <section className="section section-light recognition-section">
         <div className="page-shell">
-          <div className="recognition-intro">
-            <p className="eyebrow">When effort is not the problem</p>
-            <h2>You do not need more noise.<span>You need the pattern.</span></h2>
+          <div className="recognition-layout">
+            <div className="recognition-intro">
+              <p className="eyebrow">When the crisis has passed</p>
+              <h2>The crisis may be over.<span>But you still don&apos;t feel recovered.</span></h2>
+              <p>
+                Maybe your tests look &ldquo;fine.&rdquo; Maybe treatment ended months ago. Maybe
+                everyone expects you to be grateful, relieved, or back to normal. But your energy
+                is gone, your strength has changed, your body feels unfamiliar, and the life you
+                used to manage now feels harder than it should.
+              </p>
+            </div>
+            <div className="recovery-signals">
+              <p className="list-label">You may be dealing with</p>
+              {recoverySignals.map((signal, index) => (
+                <article key={signal}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <p>{signal}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+          <div className="recognition-close">
+            <span aria-hidden="true">H2W</span>
             <p>
-              Most meaningful problems do not stay in one category. Energy changes decisions.
-              Work shapes relationships. Mindset affects health. H2W starts by seeing what is connected.
+              You do not need more disconnected advice. You need someone to help you see the whole
+              picture, identify the leverage points, and build a plan you can actually follow.
             </p>
           </div>
-          <div className="tension-grid">
-            {tensions.map(([title, copy], index) => (
-              <article key={title}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <h3>{title}</h3>
-                <p>{copy}</p>
-              </article>
-            ))}
-          </div>
-          <p className="recognition-note">
-            If one of these feels familiar, the answer may not be to try harder. It may be to see your life differently.
-          </p>
         </div>
       </section>
 
       <section className="section pillars-section" id="philosophy">
         <div className="page-shell">
-          <div className="center-heading">
-            <p className="eyebrow eyebrow-orange">One life. Three essential dimensions.</p>
-            <h2>The H2W formula</h2>
-            <p>An extraordinary life is not created by optimizing one part while the others absorb the cost.</p>
+          <div className="section-intro-row formula-intro">
+            <div>
+              <p className="eyebrow eyebrow-orange">Recovery is not one-dimensional</p>
+              <h2>Your health affects your whole life.</h2>
+            </div>
+            <p>
+              When your body is depleted, it becomes harder to feel happy, think clearly,
+              reconnect with people, perform at work, make confident decisions, or create
+              financial and personal freedom. H2W looks at the system, not one isolated symptom.
+            </p>
           </div>
           <div className="pillars-grid">
             {pillars.map(({ name, eyebrow, description, color, icon: Icon }) => (
@@ -153,7 +222,10 @@ export default function Home() {
           </div>
           <div className="system-statement">
             <Lightbulb aria-hidden="true" size={24} />
-            <p><strong>The insight:</strong> when the three dimensions support one another, progress stops feeling like a tradeoff.</p>
+            <p>
+              <strong>The H2W formula:</strong> Happy, Healthy, and Wealthy are not separate goals.
+              They are connected parts of one recovery system.
+            </p>
           </div>
         </div>
       </section>
@@ -162,13 +234,17 @@ export default function Home() {
         <div className="page-shell">
           <div className="section-intro-row">
             <div>
-              <p className="eyebrow eyebrow-orange">How change becomes usable</p>
-              <h2>From scattered effort to intentional progress.</h2>
+              <p className="eyebrow eyebrow-orange">What changes when the pieces finally connect</p>
+              <h2>From surviving to actively rebuilding.</h2>
             </div>
-            <p>Information can explain a problem. A connected strategy helps you move through it.</p>
+            <p>
+              The goal is not a perfect body, a guaranteed result, or a return to an exact former
+              version of yourself. It is to understand your current reality, make better decisions,
+              rebuild capacity, and create forward momentum.
+            </p>
           </div>
           <div className="progression-grid">
-            {progression.map(([number, title, copy]) => (
+            {transformationOutcomes.map(([number, title, copy]) => (
               <article key={number}>
                 <span>{number}</span><h3>{title}</h3><p>{copy}</p>
               </article>
@@ -180,59 +256,75 @@ export default function Home() {
       <section className="section section-light about-section" id="dr-moe">
         <div className="page-shell about-grid">
           <div className="about-visual">
-            <Image src="/images/dr-moe-about-v2.png" alt="Dr. Moe" fill sizes="(max-width: 900px) 100vw, 45vw" />
-            <div className="about-caption"><span>Clinician. Educator. Interviewer.</span><strong>Dr. Moe</strong></div>
+            <Image src="/images/dr-moe-about-v2.webp" alt="Dr. Moe Sarah Smith" fill sizes="(max-width: 900px) 100vw, 45vw" />
+            <div className="about-caption"><span>Clinician. Educator. Recovery strategist.</span><strong>Dr. Moe</strong></div>
           </div>
           <div className="about-copy">
             <p className="eyebrow">Meet your guide</p>
-            <h2>Curious enough to question. Practical enough to make it useful.</h2>
+            <h2>Experience matters when your health story is complicated.</h2>
             <p>
-              Dr. Moe brings more than two decades of clinical perspective to the questions
-              that shape how people feel, perform, connect, and live.
+              Dr. Moe Sarah Smith is a Doctor of Chiropractic, functional-medicine and nutrition
+              clinician, educator, and founder of Moe Bodyworks. For more than 22 years, she has
+              worked directly with people navigating pain, fatigue, injury, metabolic challenges,
+              complicated health histories, and the frustrating distance between being
+              &ldquo;not sick&rdquo; and actually feeling well.
             </p>
             <p>
-              Happy Healthy Wealthy is the next evolution of that work: a platform for better
-              questions, rigorous conversations, and practical ideas that respect the complexity of real life.
+              Her work combines clinical experience, individualized laboratory insights,
+              nutrition, recovery strategy, movement, and practical coaching. Years spent teaching
+              anatomy and clinical concepts in higher education shaped her ability to translate
+              complicated science into clear decisions people can use.
+            </p>
+            <p>
+              Happy Healthy Wealthy is the next evolution of that work: helping people understand
+              what is keeping them stuck, rebuild their health, and reclaim the parts of life that
+              poor health has taken away.
             </p>
             <div className="credential-list">
-              <span><Check aria-hidden="true" size={17} /> Whole-person perspective</span>
-              <span><Check aria-hidden="true" size={17} /> Science translated clearly</span>
-              <span><Check aria-hidden="true" size={17} /> Strategy grounded in real life</span>
-              <span><Check aria-hidden="true" size={17} /> Decades of client-facing experience</span>
+              <span><Check aria-hidden="true" size={17} /> Doctor of Chiropractic</span>
+              <span><Check aria-hidden="true" size={17} /> More than 22 years in clinical practice</span>
+              <span><Check aria-hidden="true" size={17} /> Functional medicine, nutrition, and laboratory assessment</span>
+              <span><Check aria-hidden="true" size={17} /> Former higher-education anatomy and clinical educator</span>
+              <span><Check aria-hidden="true" size={17} /> Founder of Moe Bodyworks</span>
+              <span><Check aria-hidden="true" size={17} /> Host of the Happy Healthy Wealthy Podcast</span>
             </div>
-            <Link className="text-link" href="/about">Read Dr. Moe&apos;s story <ArrowRight aria-hidden="true" size={17} /></Link>
+            <div className="about-actions">
+              <Link className="text-link" href="/about">Read Dr. Moe&apos;s story <ArrowRight aria-hidden="true" size={17} /></Link>
+              <a className="text-link clinical-link" href="https://moebodyworks.com" target="_blank" rel="noreferrer">
+                Clinical services: Moe Bodyworks <ExternalLink aria-hidden="true" size={16} />
+              </a>
+            </div>
           </div>
         </div>
       </section>
 
       <section className="section fit-section">
-        <div className="page-shell fit-grid">
-          <div className="fit-lead">
-            <p className="eyebrow eyebrow-orange">Work with Dr. Moe</p>
-            <h2>A focused conversation. Not another generic prescription.</h2>
-            <p>
-              The strategy session is designed to understand where you are, what is creating friction,
-              and whether H2W is an appropriate next step.
-            </p>
-            <ApplyLink />
+        <div className="page-shell">
+          <div className="fit-grid">
+            <div className="fit-lead">
+              <p className="eyebrow eyebrow-orange">You may be a fit if</p>
+              <h2>You are ready to rebuild, but need help knowing what matters most.</h2>
+              <p>
+                H2W is designed for capable, motivated adults who want an experienced guide to
+                organize the many pieces of recovery into a practical, personalized plan.
+              </p>
+              <ApplyLink />
+            </div>
+            <div className="fit-lists">
+              <ul>
+                {fitSignals.map((signal) => (
+                  <li key={signal}><Check aria-hidden="true" /> {signal}</li>
+                ))}
+              </ul>
+            </div>
           </div>
-          <div className="fit-lists">
-            <div>
-              <p className="list-label">A strong fit if you are</p>
-              <ul>
-                <li><Check aria-hidden="true" /> Ready to examine the whole picture</li>
-                <li><Check aria-hidden="true" /> Open to honest questions and new patterns</li>
-                <li><Check aria-hidden="true" /> Willing to participate in meaningful change</li>
-              </ul>
-            </div>
-            <div className="not-fit">
-              <p className="list-label">Probably not a fit if you want</p>
-              <ul>
-                <li>A quick fix with no personal involvement</li>
-                <li>A diagnosis or replacement for medical care</li>
-                <li>A guaranteed result from a single conversation</li>
-              </ul>
-            </div>
+          <div className="clinical-boundary">
+            <span>Important boundary</span>
+            <p>
+              This program is not emergency care, cancer treatment, or a replacement for your
+              licensed medical team. It is a structured coaching relationship designed to help
+              appropriate clients organize and support the next phase of recovery.
+            </p>
           </div>
         </div>
       </section>
@@ -240,11 +332,11 @@ export default function Home() {
       <section className="section process-section">
         <div className="page-shell">
           <div className="section-intro-row">
-            <div><p className="eyebrow eyebrow-orange">What happens next</p><h2>Simple by design.</h2></div>
-            <p>No pressure tactics and no mysterious process. Just enough context to make the conversation valuable.</p>
+            <div><p className="eyebrow eyebrow-orange">How the recovery process works</p><h2>From the full story to a forward plan.</h2></div>
+            <p>A structured recovery process turns a complicated health story into priorities you can understand, apply, and adjust.</p>
           </div>
           <div className="steps-list">
-            {steps.map(([number, title, copy]) => (
+            {recoverySteps.map(([number, title, copy]) => (
               <article key={number}><span>{number}</span><div><h3>{title}</h3><p>{copy}</p></div></article>
             ))}
           </div>
@@ -252,39 +344,88 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="section program-section" id="health-recovery">
+        <div className="page-shell">
+          <div className="program-heading">
+            <p className="eyebrow">Private six-month coaching</p>
+            <h2>The H2W Health Recovery Program</h2>
+            <p>
+              Recovery rarely happens in a straight line. This six-month private coaching
+              experience gives you time to understand the full picture, build a personalized
+              strategy, implement it in real life, and adjust as your health and capacity change.
+            </p>
+          </div>
+
+          <div className="program-overview">
+            <div className="program-duration">
+              <span>06</span>
+              <strong>Months of structured support</strong>
+              <p>Enough time for meaningful implementation, adjustment, and reassessment.</p>
+            </div>
+            <div className="program-includes">
+              {programIncludes.map(([ItemIcon, title, copy]) => {
+                return (
+                  <article key={title}>
+                    <ItemIcon aria-hidden="true" size={22} />
+                    <div>
+                      <h3>{title}</h3>
+                      <p>{copy}</p>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="program-bonus">
+            <div className="bonus-icon"><Dna aria-hidden="true" size={34} /></div>
+            <div>
+              <p className="eyebrow eyebrow-orange">Pay-in-full enrollment bonus · $299 menu value</p>
+              <h3>DNA Health Blueprint <span>(3X4 Genetics)</span></h3>
+              <p>
+                Enroll with one upfront payment and receive a DNA Health Blueprint with
+                personalized interpretation and integration into your H2W Recovery Roadmap,
+                included at no additional charge.
+              </p>
+            </div>
+          </div>
+
+          <div className="program-action">
+            <p>Program investment is discussed with qualified applicants during the complimentary call.</p>
+            <ApplyLink label="Apply to see if the program is right for you" />
+          </div>
+        </div>
+      </section>
+
       <section className="section podcast-section" id="podcast">
         <div className="page-shell podcast-grid">
           <div className="podcast-art">
-            <Image src="/images/h2w-podcast-studio-v2.png" alt="Dr. Moe recording the Happy Healthy Wealthy podcast" fill sizes="(max-width: 900px) 100vw, 50vw" />
+            <Image src="/images/h2w-podcast-studio-v2.webp" alt="Dr. Moe recording the Happy Healthy Wealthy podcast" fill sizes="(max-width: 900px) 100vw, 50vw" />
           </div>
           <div className="podcast-copy">
-            <p className="eyebrow eyebrow-orange"><Mic2 aria-hidden="true" size={16} /> The podcast</p>
-            <h2><span>Better questions.</span><span>Remarkable people.</span><span>An extraordinary life.</span></h2>
+            <p className="eyebrow eyebrow-orange"><Mic2 aria-hidden="true" size={16} /> The Happy Healthy Wealthy Podcast</p>
+            <h2><span>Real conversations</span><span>about rebuilding and living</span><span>an extraordinary life.</span></h2>
             <p>
-              Conversations with researchers, clinicians, entrepreneurs, innovators, performers,
-              and people whose stories reveal what it really takes to live better.
+              Dr. Moe speaks with researchers, clinicians, entrepreneurs, innovators, and people
+              with remarkable recovery stories about the science, decisions, setbacks, and
+              strategies behind living better. The podcast expands beyond health recovery while
+              remaining a natural entry point into the H2W philosophy.
             </p>
             <div className="podcast-action-row">
-              <Image className="podcast-cover-thumbnail" src="/images/dr-moe-podcast.png" alt="Happy Healthy Wealthy podcast cover art" width={104} height={104} />
+              <Image className="podcast-cover-thumbnail" src="/images/dr-moe-podcast.webp" alt="Happy Healthy Wealthy podcast cover art" width={104} height={104} />
               <div className="podcast-actions">
-                <Link className="button button-light" href="/podcast"><CirclePlay aria-hidden="true" size={19} /> Explore the show</Link>
-                <span>YouTube · Apple Podcasts · Spotify</span>
+                <div className="podcast-buttons">
+                  <Link className="button button-light" href="/podcast"><CirclePlay aria-hidden="true" size={19} /> Explore the podcast</Link>
+                  <Link className="button button-ghost" href="/contact?type=podcast">Suggest a guest</Link>
+                </div>
+                <PodcastPlatforms compact />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="section section-light stories-section">
-        <div className="page-shell stories-layout">
-          <div><p className="eyebrow">Results with integrity</p><h2>Real stories deserve to be told well.</h2></div>
-          <div className="story-placeholder">
-            <Quote aria-hidden="true" size={34} />
-            <p>Verified client experiences and professional endorsements will appear here as permissions are finalized.</p>
-            <span>Client stories coming soon</span>
-          </div>
-        </div>
-      </section>
+      <TestimonialsSection />
 
       <section className="section faq-section">
         <div className="page-shell faq-grid">
@@ -297,7 +438,12 @@ export default function Home() {
         </div>
       </section>
 
-      <CtaBand eyebrow="Your next chapter can start here" />
+      <CtaBand
+        eyebrow="You survived the setback. Now it is time to rebuild."
+        title="You do not have to figure out the next phase alone."
+        copy="If you are ready to understand what is keeping you stuck and create a practical plan for rebuilding your health and your life, apply for a complimentary Recovery Strategy Call with Dr. Moe."
+        buttonLabel="Apply for your recovery strategy call"
+      />
       <SiteFooter />
     </main>
   );

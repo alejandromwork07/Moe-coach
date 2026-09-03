@@ -4,31 +4,34 @@ import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowLeft, ArrowRight, LoaderCircle } from "lucide-react";
 
-const focusAreas = [
-  "Energy and physical health",
-  "Mindset and emotional wellbeing",
-  "Performance and recovery",
-  "Purpose and direction",
-  "Relationships and connection",
-  "Work, wealth, and freedom",
-];
-
 export function ApplicationForm() {
   const router = useRouter();
   const [step, setStep] = useState(1);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
+  const [activeTreatment, setActiveTreatment] = useState("");
+
+  function moveToStep(nextStep: number) {
+    setStep(nextStep);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    requestAnimationFrame(() => {
+      const heading = document.querySelector<HTMLElement>(".form-step.active h2");
+      heading?.focus();
+    });
+  }
 
   function goForward() {
-    const form = document.querySelector<HTMLFormElement>("#strategy-application");
+    const form = document.querySelector<HTMLFormElement>("#recovery-application");
     if (!form) return;
 
-    const fields = Array.from(form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>(`[data-step="${step}"]`));
-    const isValid = fields.every((field) => field.reportValidity());
-    if (isValid) {
+    const fields = Array.from(
+      form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>(
+        `[data-step="${step}"]`,
+      ),
+    );
+    if (fields.every((field) => field.reportValidity())) {
       setError("");
-      setStep((current) => Math.min(3, current + 1));
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      moveToStep(Math.min(3, step + 1));
     }
   }
 
@@ -39,20 +42,23 @@ export function ApplicationForm() {
 
     try {
       const formData = new FormData(event.currentTarget);
-      const payload = {
-        ...Object.fromEntries(formData.entries()),
-        focusAreas: formData.getAll("focusAreas"),
-      };
+      let attribution = {};
+      try {
+        attribution = JSON.parse(sessionStorage.getItem("h2w_attribution") ?? "{}");
+      } catch {
+        attribution = {};
+      }
+
       const response = await fetch("/api/application", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({ ...Object.fromEntries(formData.entries()), attribution }),
       });
 
-      if (!response.ok) throw new Error("We could not submit your application.");
+      if (!response.ok) throw new Error("Application delivery failed");
       router.push("/schedule");
     } catch {
-      setError("Something went wrong. Please try again in a moment.");
+      setError("We could not submit your application. Please try again in a moment.");
       setSubmitting(false);
     }
   }
@@ -60,37 +66,29 @@ export function ApplicationForm() {
   return (
     <section className="application-panel" aria-labelledby="application-title">
       <div className="form-progress" aria-label={`Step ${step} of 3`}>
-        {[1, 2, 3].map((item) => (
-          <span className={item <= step ? "active" : ""} key={item} />
-        ))}
+        {[1, 2, 3].map((item) => <span className={item <= step ? "active" : ""} key={item} />)}
       </div>
       <div className="form-step-label">Step {step} of 3</div>
 
-      <form id="strategy-application" onSubmit={submitApplication}>
+      <form id="recovery-application" onSubmit={submitApplication}>
         <div className={step === 1 ? "form-step active" : "form-step"} aria-hidden={step !== 1}>
-          <h2 id="application-title">First, tell us about you.</h2>
-          <p>We&apos;ll use these details only to follow up about your application.</p>
-          <div className="field-grid">
-            <label>
-              First name
-              <input data-step="1" name="firstName" autoComplete="given-name" required />
-            </label>
-            <label>
-              Last name
-              <input data-step="1" name="lastName" autoComplete="family-name" required />
-            </label>
-          </div>
+          <h2 id="application-title" tabIndex={-1}>First, tell us about you.</h2>
+          <p>We will use these details only to review and follow up on your application.</p>
+          <label>
+            Full name
+            <input data-step="1" name="fullName" autoComplete="name" maxLength={160} required />
+          </label>
           <label>
             Email address
-            <input data-step="1" type="email" name="email" autoComplete="email" required />
+            <input data-step="1" type="email" name="email" autoComplete="email" maxLength={160} required />
           </label>
           <label>
-            Phone number
-            <input data-step="1" type="tel" name="phone" autoComplete="tel" required />
+            Mobile phone number
+            <input data-step="1" type="tel" name="phone" autoComplete="tel" maxLength={60} required />
           </label>
           <label>
-            City and time zone
-            <input data-step="1" name="location" autoComplete="address-level2" required />
+            Where are you located?
+            <input data-step="1" name="location" autoComplete="address-level2" maxLength={180} required />
           </label>
           <label className="honeypot" aria-hidden="true">
             Company website
@@ -99,60 +97,107 @@ export function ApplicationForm() {
         </div>
 
         <div className={step === 2 ? "form-step active" : "form-step"} aria-hidden={step !== 2}>
-          <h2>Where would you like change?</h2>
-          <p>Select every area that feels relevant right now.</p>
-          <div className="checkbox-grid">
-            {focusAreas.map((area) => (
-              <label key={area}>
-                <input type="checkbox" name="focusAreas" value={area} />
-                <span>{area}</span>
-              </label>
-            ))}
-          </div>
+          <h2 tabIndex={-1}>Tell us about your recovery.</h2>
+          <p>A clear starting picture helps Dr. Moe prepare for a more useful conversation.</p>
           <label>
-            What is the biggest challenge you are facing right now?
-            <textarea data-step="2" name="challenge" rows={5} required />
+            Which best describes what you are recovering from?
+            <select data-step="2" name="recoveryType" defaultValue="" required>
+              <option value="" disabled>Select one</option>
+              <option value="cancer-treatment">Cancer treatment</option>
+              <option value="major-illness">Major illness</option>
+              <option value="surgery">Surgery</option>
+              <option value="accident-or-injury">Accident or injury</option>
+              <option value="prolonged-decline">Prolonged fatigue or health decline</option>
+              <option value="other">Another health setback</option>
+            </select>
           </label>
           <label>
-            If we were talking one year from now, what would you want to be different?
-            <textarea data-step="2" name="desiredOutcome" rows={5} required />
+            When did the event, treatment, or major health change occur?
+            <input data-step="2" name="eventTiming" maxLength={300} required />
+          </label>
+          <label>
+            What are the three biggest ways you do not feel like yourself right now?
+            <textarea data-step="2" name="waysNotSelf" rows={5} maxLength={5000} required />
+          </label>
+          <label>
+            What have you already tried?
+            <textarea data-step="2" name="alreadyTried" rows={4} maxLength={5000} required />
+          </label>
+          <label>
+            What would meaningful recovery allow you to do again?
+            <textarea data-step="2" name="recoveryWouldAllow" rows={4} maxLength={5000} required />
           </label>
         </div>
 
         <div className={step === 3 ? "form-step active" : "form-step"} aria-hidden={step !== 3}>
-          <h2>Why is now the right time?</h2>
-          <p>A little context helps make the strategy session more useful from the start.</p>
+          <h2 tabIndex={-1}>Fit, timing, and next steps.</h2>
+          <p>These answers help protect your wellbeing and determine whether coaching is appropriate now.</p>
           <label>
-            Why are you looking for guidance now?
-            <textarea data-step="3" name="whyNow" rows={5} required />
+            Are you currently receiving active medical treatment?
+            <select
+              data-step="3"
+              name="activeTreatment"
+              value={activeTreatment}
+              onChange={(event) => setActiveTreatment(event.target.value)}
+              required
+            >
+              <option value="" disabled>Select one</option>
+              <option value="no">No</option>
+              <option value="yes">Yes</option>
+            </select>
           </label>
           <label>
-            How ready are you to make meaningful changes?
-            <select data-step="3" name="readiness" defaultValue="" required>
+            If yes, briefly explain your current treatment.
+            <textarea
+              data-step={activeTreatment === "yes" ? "3" : undefined}
+              name="activeTreatmentDetails"
+              rows={3}
+              maxLength={3000}
+              required={activeTreatment === "yes"}
+            />
+          </label>
+          <label>
+            Are you willing and able to participate in a six-month private coaching program if we determine it is a good fit?
+            <select data-step="3" name="sixMonthReadiness" defaultValue="" required>
               <option value="" disabled>Select one</option>
-              <option>Ready now and committed</option>
-              <option>Ready, but I need a clear plan</option>
-              <option>Exploring what support could look like</option>
+              <option value="yes">Yes</option>
+              <option value="unsure">I am interested, but have questions</option>
+              <option value="no">Not at this time</option>
             </select>
+          </label>
+          <label>
+            Why do you want support now?
+            <textarea data-step="3" name="whyNow" rows={4} maxLength={5000} required />
+          </label>
+          <label>
+            How did you hear about Dr. Moe or Happy Healthy Wealthy?
+            <input data-step="3" name="referralSource" maxLength={500} required />
           </label>
           <label className="consent-row">
             <input data-step="3" type="checkbox" name="consent" value="yes" required />
             <span>
-              I understand this application does not establish a doctor-patient relationship or
-              guarantee acceptance into a program.
+              I understand that coaching is not emergency care and does not replace diagnosis or
+              treatment from my licensed healthcare providers.
+            </span>
+          </label>
+          <label className="consent-row">
+            <input data-step="3" type="checkbox" name="privacyConsent" value="yes" required />
+            <span>
+              I consent to H2W processing the health-related information I provide for the purpose
+              of reviewing and responding to this coaching application.
             </span>
           </label>
           <p className="form-privacy">
-            By submitting, you agree that H2W may use this information to review and respond to
-            your application. See our <a href="/privacy" target="_blank">privacy policy</a>.
+            By submitting, you also agree to the <a href="/terms" target="_blank">terms</a> and
+            acknowledge the <a href="/privacy" target="_blank">privacy policy</a> and
+            <a href="/disclaimer" target="_blank"> educational disclaimer</a>.
           </p>
         </div>
 
-        {error && <p className="form-error" role="alert">{error}</p>}
-
+        {error ? <p className="form-error" role="alert">{error}</p> : null}
         <div className="form-controls">
           {step > 1 ? (
-            <button className="button form-back" type="button" onClick={() => setStep(step - 1)}>
+            <button className="button form-back" type="button" onClick={() => moveToStep(step - 1)}>
               <ArrowLeft aria-hidden="true" size={18} /> Back
             </button>
           ) : <span />}

@@ -4,11 +4,13 @@ import { ArrowRight } from "lucide-react";
 export function CtaBand({
   eyebrow = "A clearer next step",
   title = "Ready to stop guessing at what needs to change?",
-  copy = "Apply for a complimentary strategy session and bring the whole picture into focus.",
+  copy = "Apply for a complimentary Recovery Strategy Call and bring the whole picture into focus.",
+  buttonLabel = "Apply for a recovery strategy call",
 }: {
   eyebrow?: string;
   title?: string;
   copy?: string;
+  buttonLabel?: string;
 }) {
   return (
     <section className="final-cta">
@@ -17,7 +19,7 @@ export function CtaBand({
         <h2>{title}</h2>
         <p>{copy}</p>
         <Link className="button button-primary" href="/apply">
-          Apply for your complimentary strategy session
+          {buttonLabel}
           <ArrowRight aria-hidden="true" size={18} />
         </Link>
       </div>

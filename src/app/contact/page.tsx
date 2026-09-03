@@ -10,7 +10,14 @@ export const metadata: Metadata = {
   description: "Contact Happy Healthy Wealthy about the podcast, speaking, partnerships, or general questions.",
 };
 
-export default function ContactPage() {
+export default async function ContactPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ type?: string }>;
+}) {
+  const { type } = await searchParams;
+  const initialType = ["podcast", "media", "coaching", "partnership"].includes(type ?? "") ? type : "";
+
   return (
     <main>
       <SiteHeader />
@@ -18,7 +25,7 @@ export default function ContactPage() {
         eyebrow="Contact H2W"
         title="Start the right conversation."
         copy="Questions, podcast ideas, speaking invitations, and thoughtful partnerships all begin here."
-        image="/images/dr-moe-resources-v1.png"
+        image="/images/dr-moe-resources-v1.webp"
         imageAlt="Dr. Moe at her desk"
         imagePosition="left center"
       />
@@ -27,13 +34,13 @@ export default function ContactPage() {
           <aside>
             <p className="eyebrow">Send an inquiry</p>
             <h2>Give us enough context to be useful.</h2>
-            <p>Select the closest inquiry type and share the relevant details. For a complimentary strategy session, please use the dedicated application instead.</p>
+            <p>Select the closest inquiry type and share the relevant details. For a complimentary Recovery Strategy Call, please use the dedicated application instead.</p>
             <div className="contact-notes">
               <span><MessageSquareText aria-hidden="true" /><strong>Specific is helpful</strong>Include dates, audience, format, or goals when relevant.</span>
               <span><Clock3 aria-hidden="true" /><strong>Response timing</strong>The H2W team will respond as availability allows.</span>
             </div>
           </aside>
-          <ContactForm />
+          <ContactForm initialType={initialType} />
         </div>
       </section>
       <SiteFooter />
