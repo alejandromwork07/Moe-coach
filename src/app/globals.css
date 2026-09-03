@@ -10,7 +10,7 @@
   --gold: #c8a45d;
   --orange: #ff6a00;
   --line: rgba(16, 16, 16, 0.14);
-  --page: min(1680px, calc(100% - 40px));
+  --page: min(1680px, calc(100% - 96px));
 }
 
 * { box-sizing: border-box; }
@@ -86,7 +86,7 @@ h2 {
   left: 0;
   width: 100%;
   min-height: 88px;
-  padding-inline: max(20px, calc((100vw - 1680px) / 2));
+  padding-inline: max(48px, calc((100vw - 1680px) / 2));
   display: grid;
   grid-template-columns: 180px 1fr auto;
   align-items: center;
@@ -519,10 +519,10 @@ h2 {
 .scheduler-placeholder p { max-width: 550px; margin: 18px 0 28px; color: rgba(16,16,16,.6); line-height: 1.6; }
 
 @media (max-width: 900px) {
-  :root { --page: min(100% - 32px, 720px); }
+  :root { --page: min(100% - 48px, 720px); }
   .section { padding: 82px 0; }
   .desktop-nav, .header-cta { display: none; }
-  .site-header { width: 100%; padding-inline: 16px; grid-template-columns: 1fr auto; }
+  .site-header { width: 100%; padding-inline: 24px; grid-template-columns: 1fr auto; }
   .menu-button { display: inline-flex; }
   .mobile-nav {
     position: absolute;
@@ -570,10 +570,10 @@ h2 {
 }
 
 @media (max-width: 560px) {
-  :root { --page: calc(100% - 28px); }
+  :root { --page: calc(100% - 36px); }
   h2 { font-size: 2.45rem; }
   .section { padding: 68px 0; }
-  .site-header { width: 100%; min-height: 76px; padding-inline: 14px; }
+  .site-header { width: 100%; min-height: 76px; padding-inline: 18px; }
   .brand-link { width: 120px; height: 50px; }
   .hero { min-height: 760px; }
   .hero-content { padding-bottom: 44px; }
