@@ -21,7 +21,7 @@ export default function TermsPage() {
         <p>Happy Healthy Wealthy provides educational content and coaching-oriented services. Website content, podcast material, applications, and introductory calls do not provide diagnosis, treatment, emergency care, or individualized advice from a licensed medical, mental-health, legal, tax, or financial professional.</p>
 
         <h2>Applications and program participation</h2>
-        <p>Submitting an application does not create a doctor-patient relationship, guarantee a call, or guarantee acceptance into a coaching program. Program scope, fees, scheduling, communication expectations, and cancellation terms will be provided separately before enrollment.</p>
+        <p>Submitting an application does not create a doctor-patient relationship, guarantee a strategy session, or guarantee acceptance into a coaching program. Program scope, fees, scheduling, communication expectations, and cancellation terms will be provided separately before enrollment.</p>
 
         <h2>Medical and emergency needs</h2>
         <p>Do not use this website or H2W messaging for urgent concerns. Contact your licensed treating provider or local emergency services when immediate care is needed. Continue recommended care and medical follow-up regardless of any H2W content or coaching activity.</p>

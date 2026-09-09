@@ -4,6 +4,19 @@ import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowLeft, ArrowRight, LoaderCircle } from "lucide-react";
 
+const improvementAreas = [
+  "Health & energy",
+  "Recovery from illness, injury, or surgery",
+  "Weight & metabolism",
+  "Physical performance",
+  "Stress & burnout",
+  "Relationships",
+  "Career & business",
+  "Finances",
+  "Life direction & purpose",
+  "Other",
+];
+
 export function ApplicationForm() {
   const router = useRouter();
   const [step, setStep] = useState(1);
@@ -52,7 +65,11 @@ export function ApplicationForm() {
       const response = await fetch("/api/application", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...Object.fromEntries(formData.entries()), attribution }),
+        body: JSON.stringify({
+          ...Object.fromEntries(formData.entries()),
+          focusAreas: formData.getAll("focusAreas"),
+          attribution,
+        }),
       });
 
       if (!response.ok) throw new Error("Application delivery failed");
@@ -91,29 +108,26 @@ export function ApplicationForm() {
             <input data-step="1" name="location" autoComplete="address-level2" maxLength={180} required />
           </label>
           <label className="honeypot" aria-hidden="true">
-            Company website
-            <input name="website" tabIndex={-1} autoComplete="off" />
+            Referral code
+            <input name="referralCode" tabIndex={-1} autoComplete="off" />
           </label>
         </div>
 
         <div className={step === 2 ? "form-step active" : "form-step"} aria-hidden={step !== 2}>
-          <h2 tabIndex={-1}>Tell us about your recovery.</h2>
+          <h2 tabIndex={-1}>Tell us where you want to grow.</h2>
           <p>A clear starting picture helps Dr. Moe prepare for a more useful conversation.</p>
+          <label>What areas of your life would you most like to improve?</label>
+          <div className="checkbox-grid">
+            {improvementAreas.map((area) => (
+              <label key={area}>
+                <input type="checkbox" name="focusAreas" value={area} />
+                <span>{area}</span>
+              </label>
+            ))}
+          </div>
           <label>
-            Which best describes what you are recovering from?
-            <select data-step="2" name="recoveryType" defaultValue="" required>
-              <option value="" disabled>Select one</option>
-              <option value="cancer-treatment">Cancer treatment</option>
-              <option value="major-illness">Major illness</option>
-              <option value="surgery">Surgery</option>
-              <option value="accident-or-injury">Accident or injury</option>
-              <option value="prolonged-decline">Prolonged fatigue or health decline</option>
-              <option value="other">Another health setback</option>
-            </select>
-          </label>
-          <label>
-            When did the event, treatment, or major health change occur?
-            <input data-step="2" name="eventTiming" maxLength={300} required />
+            If relevant, when did this begin or change for you?
+            <input name="eventTiming" maxLength={300} />
           </label>
           <label>
             What are the three biggest ways you do not feel like yourself right now?
@@ -124,8 +138,8 @@ export function ApplicationForm() {
             <textarea data-step="2" name="alreadyTried" rows={4} maxLength={5000} required />
           </label>
           <label>
-            What would meaningful recovery allow you to do again?
-            <textarea data-step="2" name="recoveryWouldAllow" rows={4} maxLength={5000} required />
+            If the next 6&ndash;12 months went extremely well, what would be different in your health and life?
+            <textarea data-step="2" name="sixMonthVision" rows={4} maxLength={5000} required />
           </label>
         </div>
 

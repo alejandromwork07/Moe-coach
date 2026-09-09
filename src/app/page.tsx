@@ -26,18 +26,18 @@ import { SiteHeader } from "./site-header";
 import { TestimonialsSection } from "./testimonials-section";
 
 const homeDescription =
-  "Private health recovery coaching for people rebuilding after cancer treatment, illness, surgery, injury, or prolonged poor health. Apply for a complimentary strategy call with Dr. Moe.";
+  "Build an extraordinary life, physically, personally, and financially. H2W helps people rebuilding after a major health challenge, and people simply ready to feel, live, and perform better, identify what's holding them back. Apply for a complimentary strategy session with Dr. Moe.";
 
 export const metadata: Metadata = {
-  title: { absolute: "Health Recovery Coaching with Dr. Moe | Happy Healthy Wealthy" },
+  title: { absolute: "Happy Healthy Wealthy | Health, Life & Coaching with Dr. Moe" },
   description: homeDescription,
   openGraph: {
-    title: "Health Recovery Coaching with Dr. Moe | Happy Healthy Wealthy",
+    title: "Happy Healthy Wealthy | Health, Life & Coaching with Dr. Moe",
     description: homeDescription,
     url: "/",
   },
   twitter: {
-    title: "Health Recovery Coaching with Dr. Moe",
+    title: "Happy Healthy Wealthy | Dr. Moe",
     description: homeDescription,
   },
 };
@@ -46,21 +46,21 @@ const pillars = [
   {
     name: "Happy",
     eyebrow: "Identity & connection",
-    description: "Mindset, identity, relationships, confidence, purpose, and the ability to enjoy your life again.",
+    description: "Relationships, fulfillment, purpose, lifestyle, and the personal growth that make your life feel like your own.",
     color: "pillar-blue",
     icon: Sparkles,
   },
   {
     name: "Healthy",
     eyebrow: "Biology & capacity",
-    description: "Energy, strength, sleep, nutrition, metabolism, digestion, movement, recovery capacity, and measurable health information.",
+    description: "Recovery, energy, strength, metabolism, and the functional health, longevity, and performance to keep showing up at your best.",
     color: "pillar-green",
     icon: HeartPulse,
   },
   {
     name: "Wealthy",
     eyebrow: "Freedom & resources",
-    description: "Time, options, resources, work capacity, independence, and the freedom to build a life that feels like yours.",
+    description: "Career, business, finances, and the freedom to build the life you actually want.",
     color: "pillar-gold",
     icon: TrendingUp,
   },
@@ -70,9 +70,9 @@ const recoverySignals = [
   "Fatigue that does not match the amount of effort you are putting in",
   "Loss of strength, stamina, muscle, or physical confidence",
   "Weight or metabolic changes that no longer respond the way they once did",
-  "Sleep, digestion, pain, inflammation, or stress that complicate recovery",
+  "Feeling stuck, burned out, or unsure what direction to take next",
   "Conflicting advice and no clear sense of what to prioritize",
-  "The unsettling feeling that you survived the event but have not fully gotten your life back",
+  "Rebuilding after illness, surgery, injury, cancer treatment, or another major health event",
 ];
 
 const transformationOutcomes = [
@@ -92,12 +92,12 @@ const recoverySteps = [
 ];
 
 const fitSignals = [
-  "You are medically stable but still do not feel physically or emotionally recovered.",
   "You are rebuilding after cancer treatment, illness, surgery, injury, or an accident.",
+  "You are healthy on paper but feel stuck, depleted, burned out, or underperforming.",
   "You were once highly capable and active, but fatigue or health changes have made your life smaller.",
-  "You are willing to make changes but need help knowing which changes matter most.",
+  "You are ready for a major life improvement but unsure where to start.",
   "You want a personalized strategy rather than a one-size-fits-all protocol.",
-  "You value science and measurable information while understanding that recovery happens inside a real life.",
+  "You value science and measurable information while understanding that change happens inside a real life.",
 ];
 
 const programIncludes: Array<[LucideIcon, string, string]> = [
@@ -111,16 +111,16 @@ const programIncludes: Array<[LucideIcon, string, string]> = [
 
 const faqs = [
   ["Is this medical treatment?", "No. H2W Health Recovery Coaching is a coaching and educational service. It does not replace your physicians, oncology team, rehabilitation providers, mental-health professionals, or emergency care. Any separate clinical service is clearly identified and handled through the appropriate clinical process."],
-  ["Do I need a specific diagnosis?", "No. The program begins with your health history, present challenges, goals, and readiness for change. Fit is determined through the application and complimentary call."],
+  ["Do I need a specific diagnosis?", "No. The program begins with your health history, present challenges, goals, and readiness for change. Fit is determined through the application and complimentary strategy session."],
   ["Do you work with people after cancer treatment?", "Yes. Post-treatment recovery is an important focus of the program. Coaching does not treat cancer or replace oncology care. Clients must be appropriate for coaching and continue recommended medical follow-up."],
   ["What if I am still in active treatment?", "Apply and share where you are in treatment. Dr. Moe will determine whether coaching is appropriate now, whether coordination with your treating team is needed, or whether it is better to begin later."],
   ["Is laboratory testing included?", "Testing is individualized. Additional labs, supplements, and clinical services are optional and billed separately. Clients who pay for the six-month program in full receive the DNA Health Blueprint (3X4 Genetics) with personalized interpretation at no additional charge."],
   ["Can I participate remotely?", "Yes. Private coaching sessions can be completed remotely. Some laboratory or in-person clinical services may depend on location, eligibility, and provider requirements."],
-  ["What happens after I apply?", "After submitting the application, applicants are directed to schedule a complimentary 20-minute Recovery Strategy Call. The call is used to understand your goals, answer questions, and determine whether the program is a strong fit. Dr. Moe's team may contact you before the call if your situation requires a different kind of support."],
+  ["What happens after I apply?", "After submitting the application, applicants are directed to schedule a complimentary 20-minute H2W strategy session. The session is used to understand your goals, answer questions, and determine whether coaching is a strong fit. Dr. Moe's team may contact you beforehand if your situation requires a different kind of support."],
   ["Is a result guaranteed?", "No ethical recovery program can guarantee a specific result. Outcomes vary based on health history, medical factors, participation, consistency, and many other circumstances."],
 ];
 
-function ApplyLink({ label = "Apply for a recovery strategy call" }: { label?: string }) {
+function ApplyLink({ label = "Apply for a complimentary H2W strategy session" }: { label?: string }) {
   return (
     <Link className="button button-primary" href="/apply">
       {label}<ArrowRight aria-hidden="true" size={18} />
@@ -134,19 +134,18 @@ export default function Home() {
       <SiteHeader />
 
       <section className="hero health-recovery-hero" id="page-content">
-        <Image className="hero-image" src="/images/dr-moe-hero.webp" alt="Dr. Moe, health recovery coach and founder of Happy Healthy Wealthy" fill sizes="100vw" priority />
+        <Image className="hero-image" src="/images/dr-moe-hero.webp" alt="Dr. Moe, founder of Happy Healthy Wealthy" fill sizes="100vw" priority />
         <div className="hero-shade" />
         <div className="hero-content page-shell">
-          <p className="eyebrow eyebrow-orange">Happy Healthy Wealthy · Health Recovery Coaching</p>
-          <h1>You don&apos;t feel like yourself anymore.<span>Let&apos;s help you find your way back.</span></h1>
+          <p className="eyebrow eyebrow-orange">Happy Healthy Wealthy</p>
+          <h1>Build an extraordinary life.<span>Physically, personally, and financially.</span></h1>
           <p className="hero-copy">
-            After cancer treatment, a major illness, surgery, an accident, an injury, or a long
-            season of poor health, surviving the crisis is not always the same as feeling recovered.
-            H2W Health Recovery Coaching helps you rebuild your energy, strength, confidence, and
-            direction with a personalized strategy grounded in science, experience, and your real life.
+            Whether you&apos;re rebuilding after a major health challenge or simply know you&apos;re
+            capable of feeling, living, and performing better, H2W helps you identify what&apos;s
+            holding you back and build a strategy for moving forward.
           </p>
           <div className="hero-actions">
-            <ApplyLink label="Apply for a recovery strategy call" />
+            <ApplyLink />
             <Link className="button button-ghost" href="#dr-moe">
               Meet Dr. Moe <ArrowRight aria-hidden="true" size={18} />
             </Link>
@@ -200,13 +199,14 @@ export default function Home() {
         <div className="page-shell">
           <div className="section-intro-row formula-intro">
             <div>
-              <p className="eyebrow eyebrow-orange">Recovery is not one-dimensional</p>
+              <p className="eyebrow eyebrow-orange">Life is not one-dimensional</p>
               <h2>Your health affects your whole life.</h2>
             </div>
             <p>
-              When your body is depleted, it becomes harder to feel happy, think clearly,
-              reconnect with people, perform at work, make confident decisions, or create
-              financial and personal freedom. H2W looks at the system, not one isolated symptom.
+              Whether you are rebuilding after a major health challenge or simply know you are
+              capable of more, it becomes harder to feel happy, think clearly, reconnect with
+              people, perform at work, or create financial and personal freedom when one part of
+              your life is out of sync. H2W looks at the system, not one isolated symptom.
             </p>
           </div>
           <div className="pillars-grid">
@@ -224,7 +224,7 @@ export default function Home() {
             <Lightbulb aria-hidden="true" size={24} />
             <p>
               <strong>The H2W formula:</strong> Happy, Healthy, and Wealthy are not separate goals.
-              They are connected parts of one recovery system.
+              They are connected parts of one extraordinary life.
             </p>
           </div>
         </div>
@@ -306,7 +306,8 @@ export default function Home() {
               <h2>You are ready to rebuild, but need help knowing what matters most.</h2>
               <p>
                 H2W is designed for capable, motivated adults who want an experienced guide to
-                organize the many pieces of recovery into a practical, personalized plan.
+                organize the many pieces of health, life, and momentum into a practical,
+                personalized plan.
               </p>
               <ApplyLink />
             </div>
@@ -391,8 +392,8 @@ export default function Home() {
           </div>
 
           <div className="program-action">
-            <p>Program investment is discussed with qualified applicants during the complimentary call.</p>
-            <ApplyLink label="Apply to see if the program is right for you" />
+            <p>Program investment is discussed with qualified applicants during the complimentary session.</p>
+            <ApplyLink />
           </div>
         </div>
       </section>
@@ -439,10 +440,9 @@ export default function Home() {
       </section>
 
       <CtaBand
-        eyebrow="You survived the setback. Now it is time to rebuild."
+        eyebrow="Your next chapter starts with clarity"
         title="You do not have to figure out the next phase alone."
-        copy="If you are ready to understand what is keeping you stuck and create a practical plan for rebuilding your health and your life, apply for a complimentary Recovery Strategy Call with Dr. Moe."
-        buttonLabel="Apply for your recovery strategy call"
+        copy="If you are ready to understand what is keeping you stuck and build a practical plan for your health, your life, and your freedom, apply for a complimentary H2W strategy session with Dr. Moe."
       />
       <SiteFooter />
     </main>

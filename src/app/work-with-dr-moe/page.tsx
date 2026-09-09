@@ -9,7 +9,7 @@ import { SiteHeader } from "../site-header";
 
 export const metadata: Metadata = {
   title: "Work With Dr. Moe",
-  description: "Learn about the Happy Healthy Wealthy Recovery Strategy Call and coaching process.",
+  description: "Learn about the Happy Healthy Wealthy strategy session and coaching process.",
 };
 
 const session: Array<[LucideIcon, string, string]> = [
@@ -29,12 +29,12 @@ export default function CoachingPage() {
         image="/images/dr-moe-hero.webp"
         imageAlt="Dr. Moe"
         imagePosition="64% center"
-        action={{ href: "/apply", label: "Apply for a recovery strategy call" }}
+        action={{ href: "/apply", label: "Apply for a complimentary H2W strategy session" }}
       />
 
       <section className="section section-light coaching-intro">
         <div className="page-shell editorial-grid">
-          <div><p className="eyebrow">The starting point</p><h2>A recovery conversation with a real purpose.</h2></div>
+          <div><p className="eyebrow">The starting point</p><h2>A conversation with a real purpose.</h2></div>
           <div className="editorial-copy">
             <p className="lead">This is not a scripted sales call or a substitute for medical care.</p>
             <p>It is a focused conversation designed to understand your goals, the friction you are experiencing, and the broader system surrounding both. The objective is clarity: what deserves attention first, what kind of support may help, and whether Dr. Moe&apos;s approach is aligned with what you need.</p>
@@ -79,7 +79,7 @@ export default function CoachingPage() {
             <li><span>02</span><div><h3>Schedule</h3><p>If appropriate, select an available complimentary session.</p></div></li>
             <li><span>03</span><div><h3>Talk</h3><p>Clarify the landscape and decide on the next best step.</p></div></li>
           </ol>
-          <div className="center-action"><Link className="button button-primary" href="/apply">Apply for a recovery strategy call <ArrowRight aria-hidden="true" size={18} /></Link></div>
+          <div className="center-action"><Link className="button button-primary" href="/apply">Apply for a complimentary H2W strategy session <ArrowRight aria-hidden="true" size={18} /></Link></div>
         </div>
       </section>
 

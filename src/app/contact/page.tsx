@@ -35,7 +35,7 @@ export default async function ContactPage({
           <aside>
             <p className="eyebrow">Send an inquiry</p>
             <h2>Give us enough context to be useful.</h2>
-            <p>Select the closest inquiry type and share the relevant details. For a complimentary Recovery Strategy Call, please use the dedicated application instead.</p>
+            <p>Select the closest inquiry type and share the relevant details. For a complimentary H2W strategy session, please use the dedicated application instead.</p>
             <div className="contact-notes">
               <span><MessageSquareText aria-hidden="true" /><strong>Specific is helpful</strong>Include dates, audience, format, or goals when relevant.</span>
               <span><Clock3 aria-hidden="true" /><strong>Response timing</strong>The H2W team will respond as availability allows.</span>

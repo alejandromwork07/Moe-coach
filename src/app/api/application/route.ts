@@ -6,21 +6,28 @@ const requiredFields = [
   "email",
   "phone",
   "location",
-  "recoveryType",
-  "eventTiming",
   "waysNotSelf",
   "alreadyTried",
-  "recoveryWouldAllow",
+  "sixMonthVision",
   "activeTreatment",
   "sixMonthReadiness",
   "whyNow",
   "referralSource",
 ];
-const longFields = ["waysNotSelf", "alreadyTried", "recoveryWouldAllow", "activeTreatmentDetails", "whyNow"];
+const longFields = ["waysNotSelf", "alreadyTried", "sixMonthVision", "activeTreatmentDetails", "whyNow"];
 const attributionKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "landingPage", "referrer"];
+const maxFocusAreas = 10;
 
 function clean(value: unknown, maxLength = 500) {
   return typeof value === "string" ? value.trim().slice(0, maxLength) : "";
+}
+
+function cleanList(value: unknown, maxItems: number, maxLength = 100) {
+  if (!Array.isArray(value)) return [];
+  return value
+    .filter((item): item is string => typeof item === "string" && item.trim().length > 0)
+    .slice(0, maxItems)
+    .map((item) => item.trim().slice(0, maxLength));
 }
 
 export async function POST(request: Request) {
@@ -36,7 +43,7 @@ export async function POST(request: Request) {
   if (!body || typeof body !== "object") {
     return NextResponse.json({ error: "Invalid request" }, { status: 400 });
   }
-  if (body.website) return NextResponse.json({ accepted: true });
+  if (body.referralCode) return NextResponse.json({ accepted: true });
 
   if (
     requiredFields.some((field) => !clean(body[field])) ||
@@ -67,11 +74,11 @@ export async function POST(request: Request) {
     email: clean(body.email, 160),
     phone: clean(body.phone, 60),
     location: clean(body.location, 180),
-    recoveryType: clean(body.recoveryType, 100),
+    focusAreas: cleanList(body.focusAreas, maxFocusAreas),
     eventTiming: clean(body.eventTiming, 300),
     waysNotSelf: clean(body.waysNotSelf, 5000),
     alreadyTried: clean(body.alreadyTried, 5000),
-    recoveryWouldAllow: clean(body.recoveryWouldAllow, 5000),
+    sixMonthVision: clean(body.sixMonthVision, 5000),
     activeTreatment: clean(body.activeTreatment, 20),
     activeTreatmentDetails: clean(body.activeTreatmentDetails, 3000),
     sixMonthReadiness: clean(body.sixMonthReadiness, 100),
@@ -81,7 +88,7 @@ export async function POST(request: Request) {
     privacyConsent: body.privacyConsent,
     attribution,
     submittedAt: new Date().toISOString(),
-    source: "h2w-recovery-application",
+    source: "h2w-application",
   };
 
   if (webhookUrl) {

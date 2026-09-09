@@ -6,8 +6,8 @@ import Link from "next/link";
 import { ArrowLeft, CalendarCheck, Mail } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Schedule Your Recovery Strategy Call",
-  description: "Choose a time for your complimentary H2W Recovery Strategy Call.",
+  title: "Schedule Your H2W Strategy Session",
+  description: "Choose a time for your complimentary H2W strategy session.",
 };
 
 export default async function SchedulePage() {
@@ -38,17 +38,17 @@ export default async function SchedulePage() {
       <section className="schedule-intro page-shell" id="page-content">
         <CalendarCheck aria-hidden="true" size={30} />
         <p className="eyebrow eyebrow-orange">Thank you for applying</p>
-        <h1>{schedulingUrl ? "Schedule your Recovery Strategy Call." : "Scheduling is being finalized."}</h1>
+        <h1>{schedulingUrl ? "Schedule your H2W strategy session." : "Scheduling is being finalized."}</h1>
         <p>
           {schedulingUrl
-            ? "Choose a time below for your complimentary 20-minute call. If your situation requires a different kind of support, Dr. Moe's team may contact you before the call."
+            ? "Choose a time below for your complimentary 20-minute session. If your situation requires a different kind of support, Dr. Moe's team may contact you before the session."
             : "The dedicated H2W calendar will appear here as soon as the scheduling connection is complete."}
         </p>
       </section>
 
       <section className="scheduler-shell page-shell">
         {schedulingUrl ? (
-          <iframe title="Schedule a Recovery Strategy Call" src={schedulingUrl} referrerPolicy="strict-origin-when-cross-origin" />
+          <iframe title="Schedule an H2W strategy session" src={schedulingUrl} referrerPolicy="strict-origin-when-cross-origin" />
         ) : (
           <div className="scheduler-placeholder">
             <CalendarCheck aria-hidden="true" size={42} />

@@ -33,7 +33,7 @@ export function SiteHeader() {
         ))}
       </nav>
       <Link className="header-cta" href="/apply">
-        Apply now <ArrowRight aria-hidden="true" size={17} />
+        Apply for a complimentary H2W strategy session <ArrowRight aria-hidden="true" size={17} />
       </Link>
       <button
         className="menu-button"
@@ -48,7 +48,7 @@ export function SiteHeader() {
       </button>
       <nav className={open ? "mobile-nav open" : "mobile-nav"} id="mobile-navigation" aria-label="Mobile navigation">
         {navigation.map((item) => <Link href={item.href} key={item.href} onClick={() => setOpen(false)}>{item.label}</Link>)}
-        <Link href="/apply" onClick={() => setOpen(false)}>Apply for a recovery strategy call <ArrowRight aria-hidden="true" size={18} /></Link>
+        <Link href="/apply" onClick={() => setOpen(false)}>Apply for a complimentary H2W strategy session <ArrowRight aria-hidden="true" size={18} /></Link>
       </nav>
     </header>
   );
