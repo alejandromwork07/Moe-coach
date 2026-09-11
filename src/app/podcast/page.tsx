@@ -27,9 +27,9 @@ export default function PodcastPage() {
         eyebrow="The Happy Healthy Wealthy podcast"
         title="Real conversations about rebuilding and living an extraordinary life."
         copy="Dr. Moe speaks with researchers, clinicians, entrepreneurs, innovators, and people with remarkable recovery stories about the science, decisions, setbacks, and strategies behind living better."
-        image="/images/h2w-podcast-hero-v3.webp"
+        image="/images/h2w-podcast-studio-real.webp"
         imageAlt="Dr. Moe hosting the Happy Healthy Wealthy podcast in her studio"
-        imagePosition="38% center"
+        imagePosition="center 30%"
         align="right"
       />
 

@@ -256,7 +256,7 @@ export default function Home() {
       <section className="section section-light about-section" id="dr-moe">
         <div className="page-shell about-grid">
           <div className="about-visual">
-            <Image src="/images/dr-moe-about-v2.webp" alt="Dr. Moe Sarah Smith" fill sizes="(max-width: 900px) 100vw, 45vw" />
+            <Image src="/images/dr-moe-portrait-white.webp" alt="Dr. Moe Sarah Smith" fill sizes="(max-width: 900px) 100vw, 45vw" style={{ objectPosition: "center 15%" }} />
             <div className="about-caption"><span>Clinician. Educator. Recovery strategist.</span><strong>Dr. Moe</strong></div>
           </div>
           <div className="about-copy">
@@ -401,7 +401,7 @@ export default function Home() {
       <section className="section podcast-section" id="podcast">
         <div className="page-shell podcast-grid">
           <div className="podcast-art">
-            <Image src="/images/h2w-podcast-studio-v2.webp" alt="Dr. Moe recording the Happy Healthy Wealthy podcast" fill sizes="(max-width: 900px) 100vw, 50vw" />
+            <Image src="/images/h2w-podcast-studio-real.webp" alt="Dr. Moe recording the Happy Healthy Wealthy podcast" fill sizes="(max-width: 900px) 100vw, 50vw" />
           </div>
           <div className="podcast-copy">
             <p className="eyebrow eyebrow-orange"><Mic2 aria-hidden="true" size={16} /> The Happy Healthy Wealthy Podcast</p>

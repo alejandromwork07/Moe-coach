@@ -706,7 +706,11 @@ h2 {
 .secondary-page .page-shell { width: var(--secondary-page); }
 .secondary-page .section { padding-block: 88px; }
 .secondary-page h2 { font-size: clamp(2.15rem, 3.7vw, 3.75rem); line-height: 1.02; }
-.secondary-page .page-hero { min-height: 590px; }
+/* Scales with viewport width instead of a flat px value. A flat height forces portrait-oriented
+   photos (taller than wide) into an increasingly extreme zoom on wide screens, since object-fit:
+   cover has to scale the image up much further to cover the extra width with no matching increase
+   in height. */
+.secondary-page .page-hero { min-height: clamp(480px, 40vw, 700px); }
 .secondary-page .page-hero-shade {
   background: linear-gradient(90deg, rgba(4,4,4,.96) 3%, rgba(4,4,4,.82) 39%, rgba(4,4,4,.12) 72%, rgba(4,4,4,.18));
 }
@@ -729,12 +733,17 @@ h2 {
   font-size: 1.02rem;
   line-height: 1.62;
 }
-/* The About page's hero photo previously matched the homepage's full hero scale, which read as
-   oversized once stacked above the denser editorial sections below it. */
-.about-page .page-hero { min-height: 440px; }
+/* The About page's headline/eyebrow previously matched the homepage's full hero scale, which
+   read as oversized once stacked above the denser editorial sections below it. Height is shared
+   with the rest of .secondary-page .page-hero above. */
 .about-page .page-hero-content { padding-top: 96px; padding-bottom: 44px; }
 .about-page .page-hero-content h1 { max-width: 760px; font-size: clamp(2.4rem, 3.4vw, 3.6rem); line-height: 1.02; }
 .about-page .page-hero-content > p:not(.eyebrow) { margin: 18px 0 24px; }
+.about-page .page-hero-image,
+.media-page .page-hero-image { right: max(2vw, 24px) !important; left: auto !important; width: min(48vw, 720px) !important; }
+.resources-page .page-hero-image,
+.contact-page .page-hero-image { right: auto !important; left: max(2vw, 24px) !important; width: min(48vw, 720px) !important; }
+.about-page .page-hero-shade { background: linear-gradient(90deg, rgba(4,4,4,.98) 5%, rgba(4,4,4,.9) 43%, rgba(4,4,4,.3) 70%, rgba(4,4,4,.08)); }
 .secondary-page .section-intro-row {
   grid-template-columns: minmax(0, 1fr) minmax(300px, .64fr);
   gap: clamp(44px, 6vw, 82px);
@@ -853,9 +862,12 @@ h2 {
     padding: 130px 0 52px;
   }
   .secondary-page .page-hero-content h1 { max-width: 680px; font-size: clamp(2.75rem, 8vw, 4.6rem); }
-  .about-page .page-hero { min-height: 460px; }
   .about-page .page-hero-content { padding: 100px 0 40px; }
   .about-page .page-hero-content h1 { font-size: clamp(2.3rem, 6.5vw, 3.4rem); }
+  .about-page .page-hero-image,
+  .media-page .page-hero-image { right: -10% !important; left: auto !important; width: 78vw !important; }
+  .resources-page .page-hero-image,
+  .contact-page .page-hero-image { right: auto !important; left: -10% !important; width: 78vw !important; }
   .secondary-page .editorial-grid,
   .secondary-page .section-intro-row,
   .secondary-page .origin-grid,
@@ -885,9 +897,12 @@ h2 {
   .secondary-page .page-hero-content h1 { font-size: clamp(2.35rem, 11vw, 3.15rem); line-height: .98; }
   .secondary-page .page-hero-content > p:not(.eyebrow) { margin: 18px 0 24px; font-size: .94rem; line-height: 1.52; }
   .secondary-page .page-hero-content .button { width: 100%; }
-  .about-page .page-hero { min-height: 420px; }
   .about-page .page-hero-content { padding: 90px 0 32px; }
   .about-page .page-hero-content h1 { font-size: clamp(2rem, 9vw, 2.6rem); }
+  .about-page .page-hero-image,
+  .media-page .page-hero-image { right: -20% !important; left: auto !important; width: 105vw !important; }
+  .resources-page .page-hero-image,
+  .contact-page .page-hero-image { right: auto !important; left: -20% !important; width: 105vw !important; }
   .secondary-page .principle-grid article,
   .secondary-page .topic-grid article,
   .secondary-page .session-grid article,

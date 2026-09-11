@@ -26,9 +26,10 @@ export default function CoachingPage() {
         eyebrow="Work with Dr. Moe"
         title="Clarity before another commitment."
         copy="A thoughtful starting point for people ready to understand the whole picture and make more intentional progress."
-        image="/images/dr-moe-hero.webp"
-        imageAlt="Dr. Moe"
-        imagePosition="64% center"
+        image="/images/dr-moe-mountain-biking.webp"
+        imageAlt="Dr. Moe mountain biking"
+        imagePosition="center 8%"
+        align="right"
         action={{ href: "/apply", label: "Apply for a complimentary H2W strategy session" }}
       />
 

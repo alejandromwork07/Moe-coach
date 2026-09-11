@@ -26,9 +26,10 @@ export default function AboutPage() {
         eyebrow="About Dr. Moe"
         title="Clinical experience. Clear decisions. A whole-person view."
         copy="Dr. Moe Sarah Smith is a Doctor of Chiropractic, functional-medicine and nutrition clinician, educator, and founder of Moe Bodyworks."
-        image="/images/dr-moe-about-v2.webp"
+        image="/images/dr-moe-portrait-blazer.webp"
         imageAlt="Dr. Moe Sarah Smith"
-        imagePosition="70% 30%"
+        imagePosition="right bottom"
+        imageFit="contain"
       />
 
       <section className="section section-light editorial-section">
@@ -62,7 +63,7 @@ export default function AboutPage() {
       <section className="section section-light origin-section">
         <div className="page-shell origin-grid">
           <div className="origin-image">
-            <Image src="/images/dr-moe-hero.webp" alt="Dr. Moe in conversation" fill sizes="(max-width: 900px) 100vw, 42vw" />
+            <Image src="/images/dr-moe-portrait-black-top.webp" alt="Dr. Moe in conversation" fill sizes="(max-width: 900px) 100vw, 42vw" style={{ objectPosition: "center 15%" }} />
           </div>
           <div>
             <p className="eyebrow">Experience in context</p>

@@ -25,9 +25,10 @@ export default function MediaPage() {
         eyebrow="Media & speaking"
         title="A conversation people carry with them."
         copy="Invite Dr. Moe to bring clarity, curiosity, and a whole-person perspective to your audience."
-        image="/images/dr-moe-speaking-v1.webp"
-        imageAlt="Dr. Moe speaking on stage"
-        imagePosition="center"
+        image="/images/dr-moe-portrait-blazer.webp"
+        imageAlt="Dr. Moe"
+        imagePosition="right bottom"
+        imageFit="contain"
         action={{ href: "/contact", label: "Start an inquiry" }}
       />
 

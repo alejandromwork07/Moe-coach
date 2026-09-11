@@ -9,6 +9,7 @@ export function PageHero({
   image,
   imageAlt,
   imagePosition = "center",
+  imageFit = "cover",
   align = "left",
   action,
 }: {
@@ -18,12 +19,13 @@ export function PageHero({
   image: string;
   imageAlt: string;
   imagePosition?: string;
+  imageFit?: "cover" | "contain";
   align?: "left" | "right";
   action?: { href: string; label: string };
 }) {
   return (
     <section className={align === "right" ? "page-hero page-hero-right" : "page-hero"} id="page-content">
-      <Image className="page-hero-image" src={image} alt={imageAlt} fill priority sizes="100vw" style={{ objectPosition: imagePosition }} />
+      <Image className="page-hero-image" src={image} alt={imageAlt} fill priority sizes="100vw" style={{ objectFit: imageFit, objectPosition: imagePosition }} />
       <div className="page-hero-shade" />
       <div className="page-shell page-hero-content">
         <p className="eyebrow eyebrow-orange">{eyebrow}</p>

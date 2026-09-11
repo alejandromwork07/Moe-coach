@@ -25,9 +25,10 @@ export default async function ContactPage({
         eyebrow="Contact H2W"
         title="Start the right conversation."
         copy="Questions, podcast ideas, speaking invitations, and thoughtful partnerships all begin here."
-        image="/images/dr-moe-resources-v1.webp"
-        imageAlt="Dr. Moe at her desk"
-        imagePosition="left center"
+        image="/images/dr-moe-portrait-black-top.webp"
+        imageAlt="Dr. Moe"
+        imagePosition="left bottom"
+        imageFit="contain"
         align="right"
       />
       <section className="section section-light contact-section">

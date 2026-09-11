@@ -26,9 +26,10 @@ export default function ResourcesPage() {
         eyebrow="H2W resources"
         title="Ideas become valuable when they change a decision."
         copy="A growing collection of practical frameworks, thoughtful questions, and evidence-aware guidance for a more connected life."
-        image="/images/dr-moe-resources-v1.webp"
-        imageAlt="Dr. Moe reviewing research and notes"
-        imagePosition="center"
+        image="/images/dr-moe-portrait-orange.webp"
+        imageAlt="Dr. Moe"
+        imagePosition="left bottom"
+        imageFit="contain"
         align="right"
       />
 
