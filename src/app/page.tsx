@@ -153,12 +153,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="authority-band" aria-label="Dr. Moe's health recovery experience">
+      <section className="authority-band" aria-label="Dr. Moe's professional experience and achievements">
         <div className="page-shell authority-grid">
-          <div><strong>22+</strong><span>Years in clinical practice</span></div>
-          <div><strong>Functional</strong><span>Medicine &amp; nutrition</span></div>
-          <div><strong>Personalized</strong><span>Laboratory insights</span></div>
-          <div><strong>Private</strong><span>Recovery coaching</span></div>
+          <div><strong>23+ Years</strong><span>Clinical Experience</span></div>
+          <div><strong>150+ Patients</strong><span>Seen Weekly in Active Practice</span></div>
+          <div><strong>Former Professor</strong><span>Northwestern Health Sciences University</span></div>
+          <div><strong>Human + Animal</strong><span>Chiropractic Expertise</span></div>
+          <div><strong>11 Marathons</strong><span>Completed</span></div>
         </div>
       </section>
 

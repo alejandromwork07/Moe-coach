@@ -119,12 +119,13 @@ h2 {
 .health-recovery-hero .hero-copy { max-width: 760px; margin-top: 24px; font-size: clamp(.98rem, 1.4vw, 1.12rem); line-height: 1.6; }
 .health-recovery-hero .hero-actions { margin-top: 28px; }
 
-.authority-band { background: var(--ice); color: var(--ink); }
-.authority-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
-.authority-grid > div { min-height: 125px; display: flex; flex-direction: column; justify-content: center; padding: 20px 28px; border-right: 1px solid rgba(16,16,16,.15); }
-.authority-grid > div:first-child { border-left: 1px solid rgba(16,16,16,.15); }
-.authority-grid strong { font-size: 1.75rem; line-height: 1; }
-.authority-grid span { margin-top: 8px; color: rgba(16,16,16,.62); font-size: .74rem; text-transform: uppercase; }
+.authority-band { border-block: 1px solid rgba(255,255,255,.12); background: #090909; color: #fff; }
+.authority-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.authority-grid > div { position: relative; min-width: 0; min-height: 132px; display: flex; flex-direction: column; justify-content: center; padding: 27px clamp(18px, 2vw, 30px); border-right: 1px solid rgba(255,255,255,.13); }
+.authority-grid > div:first-child { border-left: 1px solid rgba(255,255,255,.13); }
+.authority-grid > div::before { position: absolute; top: 0; left: clamp(18px, 2vw, 30px); width: 28px; height: 3px; background: var(--orange); content: ""; }
+.authority-grid strong { color: #fff; font-size: clamp(1.15rem, 1.45vw, 1.65rem); line-height: 1.05; text-transform: uppercase; }
+.authority-grid span { max-width: 220px; margin-top: 9px; color: rgba(255,255,255,.56); font-size: .68rem; font-weight: 700; line-height: 1.4; text-transform: uppercase; }
 
 .split-layout { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1fr); gap: clamp(55px, 9vw, 130px); align-items: start; }
 .section-heading h2 { font-size: clamp(2.5rem, 4.8vw, 4.6rem); }
@@ -442,9 +443,19 @@ h2 {
 .legal-page h2 { max-width: 780px; margin-top: 44px; font-size: 1.5rem; line-height: 1.2; }
 .legal-page > p:not(.eyebrow):not(.legal-updated) { max-width: 850px; color: rgba(255,255,255,.64); line-height: 1.75; }
 .legal-link { color: var(--ice); text-decoration: underline; text-underline-offset: 3px; }
-.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 50px; }
-.story-placeholder blockquote { margin: 24px 0; font-size: 1.25rem; line-height: 1.55; }
-.story-placeholder figcaption { color: rgba(16,16,16,.55); font-size: .74rem; font-weight: 800; text-transform: uppercase; }
+.stories-section { background: #f3f4f4; }
+.stories-section .section-intro-row > p { max-width: 430px; }
+.testimonials-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; margin-top: 54px; }
+.story-card { position: relative; display: flex; min-width: 0; flex-direction: column; margin: 0; padding: clamp(28px, 3vw, 46px); border: 1px solid #d8dadb; border-top: 4px solid var(--cobalt); background: #fff; }
+.story-card:nth-child(2n) { border-top-color: var(--orange); }
+.story-card-header { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 14px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+.story-card-header > span { color: rgba(16,16,16,.38); font-size: .7rem; font-weight: 800; }
+.story-card-header p { margin: 0; color: var(--ink); font-size: .76rem; font-weight: 850; text-transform: uppercase; }
+.story-card-header svg { color: var(--orange); }
+.story-card blockquote { margin: 28px 0 34px; }
+.story-card blockquote p { margin: 0; color: rgba(16,16,16,.75); font-size: clamp(1rem, 1.15vw, 1.14rem); line-height: 1.72; }
+.story-card figcaption { margin-top: auto; color: var(--ink); font-size: .76rem; font-weight: 850; text-transform: uppercase; }
+.testimonial-disclaimer { max-width: 920px; margin: 26px 0 0; color: rgba(16,16,16,.52); font-size: .75rem; line-height: 1.55; }
 
 .application-page, .schedule-page { min-height: 100svh; background: #0a0a0a; }
 .application-header {
@@ -544,9 +555,10 @@ h2 {
   .hero-shade { background: linear-gradient(0deg, #050505 5%, rgba(5,5,5,.82) 47%, rgba(5,5,5,.12) 82%); }
   .hero-content { padding: 120px 0 65px; }
   .hero-content h1 { max-width: 650px; }
-  .authority-grid { grid-template-columns: 1fr 1fr; }
+  .authority-band { overflow: hidden; }
+  .authority-grid { width: 100%; display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.22) transparent; }
+  .authority-grid > div { flex: 0 0 min(280px, 76vw); min-height: 124px; scroll-snap-align: start; }
   .authority-grid > div:first-child { border-left: 0; }
-  .authority-grid > div:nth-child(2n) { border-right: 0; }
   .split-layout, .about-grid, .section-intro-row, .podcast-grid, .stories-layout { grid-template-columns: 1fr; }
   .large-copy { padding-top: 0; }
   .pillars-grid { grid-template-columns: 1fr; }
@@ -586,8 +598,9 @@ h2 {
   .hero-copy { line-height: 1.55; }
   .hero-actions { flex-direction: column; }
   .hero-actions .button { width: 100%; }
-  .authority-grid > div { min-height: 104px; padding: 17px 12px; }
-  .authority-grid strong { font-size: 1.4rem; }
+  .authority-grid > div { min-height: 112px; padding: 22px 20px; }
+  .authority-grid > div::before { left: 20px; }
+  .authority-grid strong { font-size: 1.28rem; }
   .authority-grid span { font-size: .64rem; }
   .pillar { padding: 38px 26px; }
   .about-visual { min-height: 470px; }
@@ -662,6 +675,7 @@ h2 {
   .footer-main { grid-template-columns: 110px 1fr; padding: 34px 0; }
   .footer-main nav { grid-column: 1 / -1; flex-wrap: wrap; }
   .footer-legal { flex-wrap: wrap; }
+  .testimonials-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 560px) {
@@ -696,6 +710,10 @@ h2 {
   .legal-page { padding-top: 140px; padding-bottom: 80px; }
   .legal-page h1 { font-size: 3.2rem; }
   .footer-legal > div { order: 3; }
+  .testimonials-grid { gap: 16px; margin-top: 38px; }
+  .story-card { padding: 26px 22px; }
+  .story-card blockquote { margin: 24px 0 28px; }
+  .story-card blockquote p { font-size: .98rem; line-height: 1.66; }
 }
 
 /* Secondary pages use a denser editorial scale than the homepage. */
