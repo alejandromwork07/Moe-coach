@@ -3,7 +3,7 @@
 import { FormEvent, useState } from "react";
 import { ArrowRight, CheckCircle2, LoaderCircle } from "lucide-react";
 
-export function ContactForm({ initialType = "" }: { initialType?: string }) {
+export function ContactForm({ initialType = "", contactEmail }: { initialType?: string; contactEmail?: string }) {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
   async function submit(event: FormEvent<HTMLFormElement>) {
@@ -55,7 +55,12 @@ export function ContactForm({ initialType = "" }: { initialType?: string }) {
       </label>
       <label>Message<textarea name="message" rows={7} minLength={20} maxLength={4000} required /></label>
       <label className="honeypot" aria-hidden="true">Website<input name="website" tabIndex={-1} autoComplete="off" /></label>
-      {status === "error" ? <p className="form-error" role="alert">Your message could not be delivered. Please try again shortly.</p> : null}
+      {status === "error" ? (
+        <p className="form-error" role="alert">
+          Your message could not be delivered. Please try again shortly.
+          {contactEmail ? <> You can also <a href={`mailto:${contactEmail}`}>email H2W directly</a>.</> : null}
+        </p>
+      ) : null}
       <button className="button button-primary" type="submit" disabled={status === "sending"}>
         {status === "sending" ? <LoaderCircle className="spin" aria-hidden="true" size={18} /> : null}
         Send inquiry <ArrowRight aria-hidden="true" size={18} />

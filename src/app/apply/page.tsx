@@ -8,9 +8,12 @@ export const metadata: Metadata = {
   title: "H2W Coaching Application",
   description:
     "Apply for a complimentary 30-minute H2W Fit Call with Dr. Moe.",
+  robots: { index: false, follow: false },
 };
 
 export default function ApplyPage() {
+  const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL;
+
   return (
     <main className="secondary-page application-page">
       <a className="skip-link" href="#page-content">Skip to application</a>
@@ -43,7 +46,7 @@ export default function ApplyPage() {
             <li><Check aria-hidden="true" size={18} /> No obligation or guaranteed acceptance</li>
           </ul>
         </aside>
-        <ApplicationForm />
+        <ApplicationForm contactEmail={contactEmail} />
       </div>
     </main>
   );

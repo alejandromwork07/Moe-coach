@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Clock3, MessageSquareText } from "lucide-react";
+import { Clock3, Mail, MessageSquareText } from "lucide-react";
 import { PageHero } from "../page-hero";
 import { SiteFooter } from "../site-footer";
 import { SiteHeader } from "../site-header";
@@ -17,6 +17,7 @@ export default async function ContactPage({
 }) {
   const { type } = await searchParams;
   const initialType = ["podcast", "media", "coaching", "partnership"].includes(type ?? "") ? type : "";
+  const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL;
 
   return (
     <main className="secondary-page contact-page">
@@ -41,8 +42,14 @@ export default async function ContactPage({
               <span><MessageSquareText aria-hidden="true" /><strong>Specific is helpful</strong>Include dates, audience, format, or goals when relevant.</span>
               <span><Clock3 aria-hidden="true" /><strong>Response timing</strong>The H2W team will respond as availability allows.</span>
             </div>
+            {contactEmail ? (
+              <a className="contact-email" href={`mailto:${contactEmail}`}>
+                <Mail aria-hidden="true" size={18} />
+                <span><strong>Email H2W directly</strong>{contactEmail}</span>
+              </a>
+            ) : null}
           </aside>
-          <ContactForm initialType={initialType} />
+          <ContactForm initialType={initialType} contactEmail={contactEmail} />
         </div>
       </section>
       <SiteFooter />

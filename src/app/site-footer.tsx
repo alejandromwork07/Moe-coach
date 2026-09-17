@@ -11,6 +11,8 @@ const links = [
 ];
 
 export function SiteFooter() {
+  const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL;
+
   return (
     <footer className="site-footer">
       <div className="page-shell footer-main">
@@ -18,6 +20,7 @@ export function SiteFooter() {
         <div className="footer-brand-copy">
           <p>Happy Healthy Wealthy</p>
           <span>The Formula for Extraordinary</span>
+          {contactEmail ? <a className="footer-email" href={`mailto:${contactEmail}`}>{contactEmail}</a> : null}
         </div>
         <nav aria-label="Footer navigation">
           {links.map(([label, href]) => <Link href={href} key={href}>{label}</Link>)}

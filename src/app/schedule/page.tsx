@@ -3,11 +3,12 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, CalendarCheck, Mail } from "lucide-react";
+import { ArrowLeft, CalendarCheck, ExternalLink, Mail } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Schedule Your Complimentary H2W Fit Call",
   description: "Choose a time for your complimentary 30-minute H2W Fit Call.",
+  robots: { index: false, follow: false },
 };
 
 function getCalendlyEventUrl() {
@@ -63,7 +64,15 @@ export default async function SchedulePage() {
 
       <section className="scheduler-shell page-shell">
         {schedulingUrl ? (
-          <iframe title="Schedule a complimentary H2W Fit Call" src={schedulingUrl} referrerPolicy="strict-origin-when-cross-origin" />
+          <>
+            <iframe title="Schedule a complimentary H2W Fit Call" src={schedulingUrl} referrerPolicy="strict-origin-when-cross-origin" />
+            <div className="scheduler-external">
+              <span>Calendar not displaying correctly?</span>
+              <a href={schedulingUrl} target="_blank" rel="noreferrer">
+                Open Calendly in a new tab <ExternalLink aria-hidden="true" size={16} />
+              </a>
+            </div>
+          </>
         ) : (
           <div className="scheduler-placeholder">
             <CalendarCheck aria-hidden="true" size={42} />

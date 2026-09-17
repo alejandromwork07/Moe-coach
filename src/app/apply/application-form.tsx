@@ -17,7 +17,7 @@ const improvementAreas = [
   "Other",
 ];
 
-export function ApplicationForm() {
+export function ApplicationForm({ contactEmail }: { contactEmail?: string }) {
   const router = useRouter();
   const [step, setStep] = useState(1);
   const [submitting, setSubmitting] = useState(false);
@@ -208,7 +208,12 @@ export function ApplicationForm() {
           </p>
         </div>
 
-        {error ? <p className="form-error" role="alert">{error}</p> : null}
+        {error ? (
+          <p className="form-error" role="alert">
+            {error}
+            {contactEmail ? <> For assistance, <a href={`mailto:${contactEmail}`}>email H2W</a>.</> : null}
+          </p>
+        ) : null}
         <div className="form-controls">
           {step > 1 ? (
             <button className="button form-back" type="button" onClick={() => moveToStep(step - 1)}>
