@@ -6,15 +6,30 @@ import Link from "next/link";
 import { ArrowLeft, CalendarCheck, Mail } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Schedule Your H2W Strategy Session",
-  description: "Choose a time for your complimentary H2W strategy session.",
+  title: "Schedule Your Complimentary H2W Fit Call",
+  description: "Choose a time for your complimentary 30-minute H2W Fit Call.",
 };
+
+function getCalendlyEventUrl() {
+  const configuredUrl = process.env.CALENDLY_EVENT_URL;
+  if (!configuredUrl) return null;
+
+  try {
+    const url = new URL(configuredUrl);
+    const isCalendlyHost = url.hostname === "calendly.com" || url.hostname.endsWith(".calendly.com");
+
+    if (url.protocol !== "https:" || !isCalendlyHost || url.username || url.password) return null;
+    return url.toString();
+  } catch {
+    return null;
+  }
+}
 
 export default async function SchedulePage() {
   const cookieStore = await cookies();
-  if (!cookieStore.has("h2w_application_submitted")) redirect("/apply");
+  if (cookieStore.get("h2w_application_submitted")?.value !== "1") redirect("/apply");
 
-  const schedulingUrl = process.env.NEXT_PUBLIC_SCHEDULING_URL;
+  const schedulingUrl = getCalendlyEventUrl();
   const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL;
 
   return (
@@ -38,17 +53,17 @@ export default async function SchedulePage() {
       <section className="schedule-intro page-shell" id="page-content">
         <CalendarCheck aria-hidden="true" size={30} />
         <p className="eyebrow eyebrow-orange">Thank you for applying</p>
-        <h1>{schedulingUrl ? "Schedule your H2W strategy session." : "Scheduling is being finalized."}</h1>
+        <h1>{schedulingUrl ? "Schedule your complimentary H2W Fit Call." : "Scheduling is being finalized."}</h1>
         <p>
           {schedulingUrl
-            ? "Choose a time below for your complimentary 20-minute session. If your situation requires a different kind of support, Dr. Moe's team may contact you before the session."
+            ? "Choose a time below for your 30-minute call with Dr. Moe. You will discuss your goals, what you have been struggling with, and whether the concierge health coaching program may be appropriate for you."
             : "The dedicated H2W calendar will appear here as soon as the scheduling connection is complete."}
         </p>
       </section>
 
       <section className="scheduler-shell page-shell">
         {schedulingUrl ? (
-          <iframe title="Schedule an H2W strategy session" src={schedulingUrl} referrerPolicy="strict-origin-when-cross-origin" />
+          <iframe title="Schedule a complimentary H2W Fit Call" src={schedulingUrl} referrerPolicy="strict-origin-when-cross-origin" />
         ) : (
           <div className="scheduler-placeholder">
             <CalendarCheck aria-hidden="true" size={42} />

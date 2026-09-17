@@ -7,6 +7,8 @@ import { PageHero } from "../page-hero";
 import { PodcastPlatforms } from "../podcast-platforms";
 import { SiteFooter } from "../site-footer";
 import { SiteHeader } from "../site-header";
+import { podcastEpisodes } from "@/content/podcast";
+import { EpisodeList } from "./episode-list";
 
 export const metadata: Metadata = {
   title: "Podcast",
@@ -62,13 +64,13 @@ export default function PodcastPage() {
       <section className="section section-light episode-section">
         <div className="page-shell">
           <div className="section-intro-row">
-            <div><p className="eyebrow">Latest conversations</p><h2>The first episodes are on their way.</h2></div>
-            <p>Verified episode titles and platform links will appear here as the show launches.</p>
+            <div>
+              <p className="eyebrow">Latest conversations</p>
+              <h2>{podcastEpisodes.length ? "Listen to the latest episodes." : "The first episodes are on their way."}</h2>
+            </div>
+            <p>{podcastEpisodes.length ? "Choose your preferred platform and continue the conversation." : "Verified episode titles and platform links will appear here as the show launches."}</p>
           </div>
-          <div className="episode-placeholder">
-            <span>Season one</span><h3>Launch lineup coming soon</h3>
-            <p>Research, health, performance, entrepreneurship, and remarkable personal stories.</p>
-          </div>
+          <EpisodeList episodes={podcastEpisodes} />
         </div>
       </section>
 

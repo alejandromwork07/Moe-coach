@@ -26,7 +26,7 @@ import { SiteHeader } from "./site-header";
 import { TestimonialsSection } from "./testimonials-section";
 
 const homeDescription =
-  "Build an extraordinary life, physically, personally, and financially. H2W helps people rebuilding after a major health challenge, and people simply ready to feel, live, and perform better, identify what's holding them back. Apply for a complimentary strategy session with Dr. Moe.";
+  "Build an extraordinary life, physically, personally, and financially. H2W helps people rebuilding after a major health challenge, and people simply ready to feel, live, and perform better, identify what's holding them back. Apply for a complimentary H2W Fit Call with Dr. Moe.";
 
 export const metadata: Metadata = {
   title: { absolute: "Happy Healthy Wealthy | Health, Life & Coaching with Dr. Moe" },
@@ -111,16 +111,16 @@ const programIncludes: Array<[LucideIcon, string, string]> = [
 
 const faqs = [
   ["Is this medical treatment?", "No. H2W Health Recovery Coaching is a coaching and educational service. It does not replace your physicians, oncology team, rehabilitation providers, mental-health professionals, or emergency care. Any separate clinical service is clearly identified and handled through the appropriate clinical process."],
-  ["Do I need a specific diagnosis?", "No. The program begins with your health history, present challenges, goals, and readiness for change. Fit is determined through the application and complimentary strategy session."],
+  ["Do I need a specific diagnosis?", "No. The program begins with your health history, present challenges, goals, and readiness for change. Fit is determined through the application and complimentary H2W Fit Call."],
   ["Do you work with people after cancer treatment?", "Yes. Post-treatment recovery is an important focus of the program. Coaching does not treat cancer or replace oncology care. Clients must be appropriate for coaching and continue recommended medical follow-up."],
   ["What if I am still in active treatment?", "Apply and share where you are in treatment. Dr. Moe will determine whether coaching is appropriate now, whether coordination with your treating team is needed, or whether it is better to begin later."],
   ["Is laboratory testing included?", "Testing is individualized. Additional labs, supplements, and clinical services are optional and billed separately. Clients who pay for the six-month program in full receive the DNA Health Blueprint (3X4 Genetics) with personalized interpretation at no additional charge."],
   ["Can I participate remotely?", "Yes. Private coaching sessions can be completed remotely. Some laboratory or in-person clinical services may depend on location, eligibility, and provider requirements."],
-  ["What happens after I apply?", "After submitting the application, applicants are directed to schedule a complimentary 20-minute H2W strategy session. The session is used to understand your goals, answer questions, and determine whether coaching is a strong fit. Dr. Moe's team may contact you beforehand if your situation requires a different kind of support."],
+  ["What happens after I apply?", "After submitting the application, applicants are directed to schedule a complimentary 30-minute H2W Fit Call. The call is used to understand your goals, what you have been struggling with, and whether the concierge health coaching program may be appropriate for you. Dr. Moe's team may contact you beforehand if your situation requires a different kind of support."],
   ["Is a result guaranteed?", "No ethical recovery program can guarantee a specific result. Outcomes vary based on health history, medical factors, participation, consistency, and many other circumstances."],
 ];
 
-function ApplyLink({ label = "Apply for a complimentary H2W strategy session" }: { label?: string }) {
+function ApplyLink({ label = "Apply for a complimentary H2W Fit Call" }: { label?: string }) {
   return (
     <Link className="button button-primary" href="/apply">
       {label}<ArrowRight aria-hidden="true" size={18} />
@@ -393,7 +393,7 @@ export default function Home() {
           </div>
 
           <div className="program-action">
-            <p>Program investment is discussed with qualified applicants during the complimentary session.</p>
+            <p>Program investment is discussed with qualified applicants during the complimentary H2W Fit Call.</p>
             <ApplyLink />
           </div>
         </div>
@@ -443,7 +443,7 @@ export default function Home() {
       <CtaBand
         eyebrow="Your next chapter starts with clarity"
         title="You do not have to figure out the next phase alone."
-        copy="If you are ready to understand what is keeping you stuck and build a practical plan for your health, your life, and your freedom, apply for a complimentary H2W strategy session with Dr. Moe."
+        copy="If you are ready to understand what is keeping you stuck and build a practical plan for your health, your life, and your freedom, complete the coaching application to request a complimentary 30-minute H2W Fit Call with Dr. Moe."
       />
       <SiteFooter />
     </main>

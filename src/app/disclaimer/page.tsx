@@ -13,9 +13,9 @@ export default function DisclaimerPage() {
         <h1>Educational disclaimer</h1>
         <p className="legal-updated">Last updated: September 1, 2026</p>
         <h2>Educational information only</h2>
-        <p>Happy Healthy Wealthy website, podcast, resources, and strategy sessions are provided for general educational and informational purposes. They are not medical, psychological, legal, tax, or financial advice.</p>
+        <p>Happy Healthy Wealthy website, podcast, resources, and Fit Calls are provided for general educational and informational purposes. They are not medical, psychological, legal, tax, or financial advice.</p>
         <h2>No clinical relationship</h2>
-        <p>Using this website, submitting a form, listening to the podcast, or participating in an introductory strategy session does not create a doctor-patient or other licensed professional relationship.</p>
+        <p>Using this website, submitting a form, listening to the podcast, or participating in an H2W Fit Call does not create a doctor-patient or other licensed professional relationship.</p>
         <h2>Cancer and active-treatment boundary</h2>
         <p>H2W coaching does not treat cancer, prevent recurrence, replace oncology or rehabilitation care, or provide emergency services. People in active treatment are considered only when coaching is appropriate and any necessary coordination with their licensed medical team is in place.</p>
         <h2>Seek appropriate professional care</h2>

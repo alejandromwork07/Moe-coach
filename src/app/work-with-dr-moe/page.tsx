@@ -9,7 +9,7 @@ import { SiteHeader } from "../site-header";
 
 export const metadata: Metadata = {
   title: "Work With Dr. Moe",
-  description: "Learn about the Happy Healthy Wealthy strategy session and coaching process.",
+  description: "Learn about the Happy Healthy Wealthy Fit Call and concierge coaching process.",
 };
 
 const session: Array<[LucideIcon, string, string]> = [
@@ -30,7 +30,7 @@ export default function CoachingPage() {
         imageAlt="Dr. Moe mountain biking"
         imagePosition="center 8%"
         align="right"
-        action={{ href: "/apply", label: "Apply for a complimentary H2W strategy session" }}
+        action={{ href: "/apply", label: "Apply for a complimentary H2W Fit Call" }}
       />
 
       <section className="section section-light coaching-intro">
@@ -77,10 +77,10 @@ export default function CoachingPage() {
           </div>
           <ol className="numbered-path">
             <li><span>01</span><div><h3>Apply</h3><p>Share your goals, challenges, and why now matters.</p></div></li>
-            <li><span>02</span><div><h3>Schedule</h3><p>If appropriate, select an available complimentary session.</p></div></li>
+            <li><span>02</span><div><h3>Schedule</h3><p>After submitting, select a time for your complimentary 30-minute H2W Fit Call.</p></div></li>
             <li><span>03</span><div><h3>Talk</h3><p>Clarify the landscape and decide on the next best step.</p></div></li>
           </ol>
-          <div className="center-action"><Link className="button button-primary" href="/apply">Apply for a complimentary H2W strategy session <ArrowRight aria-hidden="true" size={18} /></Link></div>
+          <div className="center-action"><Link className="button button-primary" href="/apply">Apply for a complimentary H2W Fit Call <ArrowRight aria-hidden="true" size={18} /></Link></div>
         </div>
       </section>
 

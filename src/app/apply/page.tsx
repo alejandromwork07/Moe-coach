@@ -5,9 +5,9 @@ import { ArrowLeft, Check } from "lucide-react";
 import { ApplicationForm } from "./application-form";
 
 export const metadata: Metadata = {
-  title: "Apply for a Complimentary H2W Strategy Session",
+  title: "H2W Coaching Application",
   description:
-    "Apply for a complimentary 20-minute H2W strategy session with Dr. Moe.",
+    "Apply for a complimentary 30-minute H2W Fit Call with Dr. Moe.",
 };
 
 export default function ApplyPage() {
@@ -31,7 +31,7 @@ export default function ApplyPage() {
 
       <div className="application-shell page-shell" id="page-content">
         <aside className="application-intro">
-          <p className="eyebrow eyebrow-orange">H2W strategy session application</p>
+          <p className="eyebrow eyebrow-orange">H2W coaching application</p>
           <h1>Let&apos;s understand where you are now.</h1>
           <p>
             This application helps Dr. Moe understand your health and life right now, what you
@@ -39,7 +39,7 @@ export default function ApplyPage() {
           </p>
           <ul>
             <li><Check aria-hidden="true" size={18} /> Three clear, mobile-friendly steps</li>
-            <li><Check aria-hidden="true" size={18} /> Reviewed before your complimentary session</li>
+            <li><Check aria-hidden="true" size={18} /> Reviewed before your 30-minute H2W Fit Call</li>
             <li><Check aria-hidden="true" size={18} /> No obligation or guaranteed acceptance</li>
           </ul>
         </aside>

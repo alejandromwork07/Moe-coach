@@ -4,8 +4,8 @@ import { ArrowRight } from "lucide-react";
 export function CtaBand({
   eyebrow = "A clearer next step",
   title = "Ready to stop guessing at what needs to change?",
-  copy = "Apply for a complimentary H2W strategy session and bring the whole picture into focus.",
-  buttonLabel = "Apply for a complimentary H2W strategy session",
+  copy = "Complete the H2W coaching application to request a complimentary 30-minute Fit Call.",
+  buttonLabel = "Apply for a complimentary H2W Fit Call",
 }: {
   eyebrow?: string;
   title?: string;

@@ -108,6 +108,7 @@ export async function POST(request: Request) {
     secure: process.env.NODE_ENV === "production",
     maxAge: 60 * 60 * 2,
     path: "/schedule",
+    priority: "high",
   });
   return response;
 }
