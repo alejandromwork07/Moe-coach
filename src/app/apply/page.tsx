@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Check } from "lucide-react";
+import { getContactEmail } from "@/lib/site-config";
 import { ApplicationForm } from "./application-form";
 
 export const metadata: Metadata = {
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 export default function ApplyPage() {
-  const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL;
+  const contactEmail = getContactEmail();
 
   return (
     <main className="secondary-page application-page">

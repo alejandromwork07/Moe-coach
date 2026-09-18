@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, CalendarCheck, ExternalLink, Mail } from "lucide-react";
+import { DEFAULT_CALENDLY_URL, getContactEmail } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "Schedule Your Complimentary H2W Fit Call",
@@ -12,8 +13,7 @@ export const metadata: Metadata = {
 };
 
 function getCalendlyEventUrl() {
-  const configuredUrl = process.env.CALENDLY_EVENT_URL;
-  if (!configuredUrl) return null;
+  const configuredUrl = process.env.CALENDLY_EVENT_URL?.trim() || DEFAULT_CALENDLY_URL;
 
   try {
     const url = new URL(configuredUrl);
@@ -31,7 +31,7 @@ export default async function SchedulePage() {
   if (cookieStore.get("h2w_application_submitted")?.value !== "1") redirect("/apply");
 
   const schedulingUrl = getCalendlyEventUrl();
-  const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL;
+  const contactEmail = getContactEmail();
 
   return (
     <main className="secondary-page schedule-page">

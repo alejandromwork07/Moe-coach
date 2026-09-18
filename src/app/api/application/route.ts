@@ -1,4 +1,6 @@
 import { NextResponse } from "next/server";
+import { deliverForm, isFormDeliveryConfigured } from "@/lib/form-delivery";
+import { getContactEmail } from "@/lib/site-config";
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const requiredFields = [
@@ -60,7 +62,7 @@ export async function POST(request: Request) {
   }
 
   const webhookUrl = process.env.APPLICATION_WEBHOOK_URL;
-  if (!webhookUrl && process.env.NODE_ENV === "production") {
+  if (!isFormDeliveryConfigured(webhookUrl) && process.env.NODE_ENV === "production") {
     return NextResponse.json({ error: "Application delivery is not configured" }, { status: 503 });
   }
 
@@ -70,6 +72,9 @@ export async function POST(request: Request) {
     attributionKeys.map((key) => [key, clean(rawAttribution[key], 500)]).filter(([, value]) => Boolean(value)),
   );
   const payload = {
+    recipient: getContactEmail(),
+    subject: `New H2W coaching application from ${clean(body.fullName, 160)}`,
+    replyTo: clean(body.email, 160),
     fullName: clean(body.fullName, 160),
     email: clean(body.email, 160),
     phone: clean(body.phone, 60),
@@ -91,17 +96,45 @@ export async function POST(request: Request) {
     source: "h2w-application",
   };
 
-  if (webhookUrl) {
-    const delivery = await fetch(webhookUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-      signal: AbortSignal.timeout(10_000),
-    }).catch(() => null);
-    if (!delivery?.ok) return NextResponse.json({ error: "Delivery failed" }, { status: 502 });
-  }
+  const text = [
+    payload.subject,
+    "",
+    `Name: ${payload.fullName}`,
+    `Email: ${payload.email}`,
+    `Phone: ${payload.phone}`,
+    `Location: ${payload.location}`,
+    `Focus areas: ${payload.focusAreas.join(", ") || "Not specified"}`,
+    `Relevant timing: ${payload.eventTiming || "Not specified"}`,
+    "",
+    "Ways they do not feel like themselves:",
+    payload.waysNotSelf,
+    "",
+    "What they have tried:",
+    payload.alreadyTried,
+    "",
+    "6-12 month vision:",
+    payload.sixMonthVision,
+    "",
+    `Active medical treatment: ${payload.activeTreatment}`,
+    `Treatment details: ${payload.activeTreatmentDetails || "Not provided"}`,
+    `Six-month readiness: ${payload.sixMonthReadiness}`,
+    "",
+    "Why now:",
+    payload.whyNow,
+    "",
+    `Referral source: ${payload.referralSource}`,
+    `Submitted: ${payload.submittedAt}`,
+  ].join("\n");
+  const delivery = await deliverForm({
+    webhookUrl,
+    subject: payload.subject,
+    replyTo: payload.replyTo,
+    payload,
+    text,
+  });
+  if (!delivery.ok) return NextResponse.json({ error: "Delivery failed" }, { status: 502 });
 
-  const response = NextResponse.json({ accepted: true, mode: webhookUrl ? "live" : "preview" });
+  const response = NextResponse.json({ accepted: true, mode: delivery.mode });
   response.cookies.set("h2w_application_submitted", "1", {
     httpOnly: true,
     sameSite: "lax",

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { getContactEmail } from "@/lib/site-config";
 
 const links = [
   ["About", "/about"],
@@ -11,7 +12,7 @@ const links = [
 ];
 
 export function SiteFooter() {
-  const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL;
+  const contactEmail = getContactEmail();
 
   return (
     <footer className="site-footer">

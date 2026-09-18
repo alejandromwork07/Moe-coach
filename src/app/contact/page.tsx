@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Clock3, Mail, MessageSquareText } from "lucide-react";
+import { getContactEmail } from "@/lib/site-config";
 import { PageHero } from "../page-hero";
 import { SiteFooter } from "../site-footer";
 import { SiteHeader } from "../site-header";
@@ -17,7 +18,7 @@ export default async function ContactPage({
 }) {
   const { type } = await searchParams;
   const initialType = ["podcast", "media", "coaching", "partnership"].includes(type ?? "") ? type : "";
-  const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL;
+  const contactEmail = getContactEmail();
 
   return (
     <main className="secondary-page contact-page">
